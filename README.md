@@ -1,6 +1,6 @@
 # PE - Probability and Statistics
 
-This repository contains `PE.pdf`, the PDF summarizing the entire content covered in a Probability and Statistics class, which follows a top-down approach in discussing each layer of the internet.
+This repository contains `PE.pdf`, the PDF summarizing the entire content covered in a Probability and Statistics class.
 
 ## Key contents
 
