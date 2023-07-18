@@ -1,0 +1,202 @@
+\newcommand{\indep}{\rotatebox[origin=c]{90}{$\,\models\,$}}
+\def\equalfootnote{\mathrel{\ensurestackMath{\stackon[1pt]{=}{\raisebox{-1em}{\footnotemark[4]}}}}}
+%//==============================--@--==============================//%
+\clearpage
+\subsection[1.2 Probabilidade condicionada]{\hspace*{0.075 em}\raisebox{0.2 em}{$\pmb{\drsh}$} Probabilidade condicionada}
+\label{subsec:conditional-probability}
+
+\begin{theo}[\underline{Probabilidade Condicionada}]{def:condicionada}\label{def:Prob-condicionada}
+    Sejam $(\Omega,\mathcal{A},P)$ um espaço de probabilidade e $B$ um evento de $\mathcal{A}$ tal que $P(B) > 0$. A probabilidade de o evento $A$ se realizar, sabendo que $B$ se realizou é definida por:
+    $$
+        P(A|B) = \dfrac{P(A \cap B)}{P(B)},
+    $$
+    onde $P(A|B)$ é designado pela probabilidade de $A$ condicionada por $B$.
+    
+    \vspace{1 em}
+    \noindent \textbf{Nota:} Esta probabilidade representa uma reavaliação da probabilidade $A$ face ao facto de $B$ ter ocorrido. Lê-se \textit{probabilidade de $A$ dado $B$}, \textit{probabilidade de $A$ sabendo $B$}, \textit{probabilidade de $A$ condicional à ocorrência de $B$}. 
+\end{theo}
+
+\noindent \textbf{Probabilidade Condicionada:} Considerando $P(B) > 0$ e $P_B(A) = P(A|B)$, $P_B(A)$ é uma função de probabilidade (no sentido de Kolmogorov), se satisfaz os axiomas supramencionados que constam na \hyperref[def:probability-function]{ definição de função de probabilidade}:
+
+\vspace{-0.75 em}
+\begin{enumerate}
+    \item[(A1$'$)] $P_B(A) = P(A | B) \geq 0, \forall A \in \mathcal{A}$
+    \item[(A2$'$)] $P_B(\Omega) = P(\Omega | B) = 1$
+    \item[(A3$'$)] Seja $\{A_1, A_2, \dots\}$ uma coleção numerável de eventos disjuntos de $\mathcal{A}$ ($A_i \cap A_j = \emptyset$). Então,
+        $$
+            P_B\left( \bigcup_{i=1}^{+\infty} A_i \right) =  P\left( \bigcup_{i=1}^{+\infty} A_i \,\middle\vert\, B\right) = \sum_{i=1}^{+\infty} P(A_i | B)  
+        $$
+\end{enumerate}
+Onde $P_B$ goza das consequências elementares da axiomática.
+
+%//==============================--@--==============================//%
+\subsubsection[1.2.1 Leis das Probabilidades Compostas e da Probabilidade Total.]{$\pmb{\rightarrow}$ Leis das Probabilidades Compostas e da Probabilidade Total.}
+
+\begin{theo}[\underline{Lei das Probabilidades Compostas}]{def:Pcomposta}\label{def:Pcomposta}
+    Considere-se uma coleção de $n$ eventos $\{A_i\}_{i=1,\dots,n}$ tal que $P(A_1 \cap A_2 \cap \dots \cap A_{n-1} \cap A_n)$. Então,
+    
+    \vspace{-1 em}
+    \begin{align*}
+        P(A_1 \cap A_2 \cap \dots \cap A_{n-1} \cap A_n) =\: &P(A_1) \times P(A_2|A_1) \times P(A_3 | (A_1 \cap A_2)) \times \\
+       &\dots  \times P(A_n | (A_1 \cap A_2 \cap \dots \cap A_{n - 1}))
+    \end{align*}
+\end{theo}
+
+\begin{theo}[\underline{Partição do Espaço de Resultados $\pmb{\Omega}$}]{def:Partição}\label{def:Partição}
+    A coleção de $n$ eventos $\mathcal{P}_\Omega = \{A_i\}_{i=1,\dots,n}$ diz-se uma partição de $\Omega$ sse for constituído por eventos dijuntos, cuja reunião coincide com $\Omega$:
+    
+    \vspace{-1em}
+    \begin{enumerate}[label=$\bullet$]
+        \item $A_i \cap A_j = \emptyset, \forall i \neq j$
+        \item $\bigcup_{i=1}^{n} A_i = \Omega$
+    \end{enumerate}
+
+   \noindent Consequentemente, caso $\mathcal{P}_\Omega = \{A_i\}_{i=1,\dots,n}$ seja uma partição de $\Omega$:
+
+    \vspace{-0.75em}
+    $$
+        \sum_{i = 1}^{n} P(A_i) = 1
+    $$
+\end{theo}
+
+\newpage
+\noindent \textbf{Exemplo: Partições de $\Omega$}
+
+\vspace{-0.75em}
+\begin{enumerate}[label=$\bullet$]
+    \item \textbf{E.a.:} Registo do número de acidentes na A1 durante uma ano
+    \item \textbf{Espaço de Resultados:} $\Omega = \{0,1,2,\dots\}$
+    \item \textbf{Duas partições de $\Omega$:}
+    
+    \vspace{-2.25 em}
+    \begin{align*}
+       & \mathcal{P}_\Omega = \{\{0,2,4,6,\dots\}, \{1,3,5,\dots\}\}\quad &&\text{Partição constituída pelos eventos \textit{par} e \textit{ímpar}}\\
+       & \mathcal{P}_\Omega = \{\{i\}\}_{i = 0,1,2,\dots}\quad &&\text{Partição constítuida pelos eventos elementares de $\Omega$ }
+    \end{align*}
+\end{enumerate}
+
+\begin{theo}[\underline{Lei da Probabilidade Total}]{def:PTotal}\label{def:PTotal}
+    Sejam:
+
+    \vspace{-1em}
+    \begin{enumerate}[label=$\bullet$]
+        \item B um evento
+        \item $\mathcal{P}_\Omega$ uma partição finita de $\Omega$ constituída por eventos tais que $P(A_i) > 0$ com $i = 1,\dots, n$
+    \end{enumerate}
+
+    \vspace{-1em}
+    \noindent Então,
+    $$
+        P(B) = \sum_{i=1}^{n}P(B | A_i)P(A_i)
+    $$
+\end{theo}
+Como $\mathcal{P}_\Omega = \{A_i\}_{i=1,\dots,n}$ é uma partição do espaço de resultados $\Omega$, é possível admitir:
+$$
+    \bigcup_{i=1}^{n} A_i = \Omega
+$$
+Subsequentemente, invocando a propriedade modular das operações sobre eventos (e posteriormente a propriedade distributiva):
+$$
+    B = B \cap \Omega
+    = B \cap \bigcup_{i=1}^{n} A_i
+    = \bigcup_{i=1}^{n} (B \cap A_i)
+$$
+Reconhecendo que os eventos $(B \cap A_1), \dots, (B \cap A_n)$ são dijuntos dois a dois, isto é, $(B \cap A_i) \cap (B \cap A_j) = B \cap (A_i \cap A_j) = \emptyset$ e relembrando o axioma (A3) já previamente abordado na \hyperref[def:probability-function]{função de probabilidade}, tem-se então:
+$$
+    P(B) = \sum_{i=1}^{n} P(B \cap A_i) = \boxed{\sum_{i=1}^{n} P(B|A_i)P(A_i)}
+$$
+
+\phantomsection\addcontentsline{toc}{subsubsection}{1.2.2 Teorema de Bayes}
+\begin{theo}[\underline{Teorema de Bayes}]{def:TBayes}\label{def:TBayes}
+    Sejam:
+
+    \vspace{-1em}
+    \begin{enumerate}[label=$\bullet$]
+        \item B um evento
+        \item $\mathcal{P}_\Omega$ uma partição de $\Omega$ tal que $P(A_i) > 0, i = 1,\dots, n$
+    \end{enumerate}
+    
+    \vspace{-1em}
+    \noindent Então,
+    $$
+        P(A_i|B) \equalfootnote \frac{P(A_i \cap B)}{P(B)} = \dfrac{P(A_i) \times P(B|A_i)}{\sum_{j=1}^{n}P(B | A_j) \times P(A_j)}
+    $$
+\end{theo}
+
+\footnotetext[4]{%
+    Intuitivamente, sabendo que $B$ ocorreu, permite-nos imaginar $B$ como o "novo" $\Omega$. Desta forma, a probabilidade é dada pela parte de $A$ em $B$, escalada para que $P(B|B) = 1$.
+}
+
+%//==============================--@--==============================//%
+\newpage
+\subsubsection[1.2.3 Acontecimentos Independentes]{$\pmb{\rightarrow}$ Acontecimentos Independentes}
+\vspace{-0.5 em}
+\iffalse
+\noindent Dois eventos $A$ e $B$ são independentes caso a realização de um não influencie a concretização do outro. Neste sentido, é possível afirmar que $P(A|B) = P(A)$ e $P(B|A) = P(B)$, o que implica que $P(A \cap B) = P(A) \times P(B)$ (desde que $P(A)\times P(B) > 0$):
+\fi
+\begin{theo}[\underline{Acontecimentos Independentes}]{def:Aindependentes}\label{def:Aindependentes}
+    $A$ e $B$ dizem-se independentes sse
+    $$
+        P(A \cap B) = P(A) \times P(B)
+    $$
+    Onde é usual escrever $A$\indep $B$
+    
+    \vspace{1 em}
+    \noindent \textbf{Nota:} ``A independência entre eventos traduz a ausência de interação probabilística entre os mesmos''\cite{Morais2020}. Por outro lado, a indepedência pode ser averiguada para quaisquer eventos (nomeadamento com probabilidade nula) ao invês da probabilidade condicionada, que é definida apenas quando $P(B) > 0$, para $P(A | B)$.
+\end{theo}
+
+\begin{theo}[\underline{Consequências da Independência entre Eventos}]{def:Consequencia-eventos-indep}\label{def:Consequencia-eventos-indep}
+    \begin{enumerate}
+        \item Para qualquer evento A:
+        \vspace{-0.5 em}
+        \begin{enumerate}[label=$\bullet$]
+            \item $A\indep \emptyset$ e $A\indep \Omega$
+        \end{enumerate}
+        \item Sejam $A$ e $B$ independentes:
+        \vspace{-0.5 em}
+        \begin{enumerate}[label=$\bullet$]
+            \item $P(A|B) = P(A), P(B) > 0$
+            \item $P(B|A) = P(B), P(A) > 0$
+        \end{enumerate}
+        Ou seja, como já referido, a realização de B não influencia a
+        concretização de A e vice-versa.
+        \item Sejam $A$ e $B$ independentes:
+        \vspace{-0.5 em}
+        \begin{enumerate}[label=$\bullet$]
+            \item $\bar{A} \indep B$, $A \indep \bar{B}$ ou $\bar{A} \indep \bar{B}$
+        \end{enumerate}
+    \end{enumerate}
+\end{theo}
+
+\begin{theo}[\underline{Acontecimentos Independentes Vs. Eventos Dijuntos}]{def:Indp-vs-dij}\label{def:Indp-vs-dij}
+    Sejam $A$ e $B$ dois eventos dijuntos com probabilidades positivas:
+
+    \vspace{-0.75em}
+    \begin{enumerate}[label=$\bullet$]
+        \item $A \cap B = \emptyset$
+        \item $P(A) > 0$ e $P(B) > 0$
+    \end{enumerate}
+    
+    \vspace{-0.75em}
+    \noindent Então $A$ e $B$ não são acontecimentos independentes.
+\end{theo}
+
+\begin{theo}[\underline{$\pmb{n}$ Eventos Mutuamente Independentes}]{def:nIndp}\label{def:nIndp}
+    Os $n$ eventos $A_1,\dots, A_n$ são mutuamente independentes sse forem independentes dois a dois, três a três, $\dots$, $n$ a $n$, ou seja:
+    
+    \vspace{-0.75 em}
+    $$
+        P\left(\bigcap_{i=1}^{m} A_{k_i}\right) = \prod_{i=1}^{m} P(A_{k_i})
+    $$
+
+\end{theo}
+
+\begin{theo}[\underline{Independência Condicional }]{def:Indp-cond}\label{def:Indp-cond}
+    Os eventos $A$ e $B$ dizem-se condicionalmente independentes em relação a $C$ sse
+    
+    \vspace{-0.75 em}
+    $$
+        P[(A \cap B) | C] = P(A | C) \times P(B | C)
+    $$
+\end{theo}
+
+%//==============================--@--==============================//%

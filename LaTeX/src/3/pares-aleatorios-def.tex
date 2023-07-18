@@ -1,0 +1,43 @@
+%//==============================--@--==============================//%
+\noindent\textbf{Pares Aleatórios} --- A definição de par aleatório (ou v.a. bidimensional) é análoga à de v.a. unidimensional: lidamos com uma função --- com características especiais --- que transforma eventos em pares ordenados.
+
+\begin{theo}[\underline{Par Aleatório}]{def:par-aleatorio}\label{def:par-aleatorio}
+    A função $(X,Y)$ diz-se um par alatório caso transforme o espaço $\Omega$ em $\mathbb{R}^2$ e a imagem inversa --- segundo $(X,Y)$ --- de qualquer região do tipo $]-\infty, x] \times ]-\infty, y]$ pertença À $\sigma$-álgebra $\mathcal{A}$ definida sobre $\Omega$
+    $$
+        (X,Y):\,\; (X,Y)^{-1} = (]-\infty, x] \times ]-\infty, y]) \in \mathcal{A},\, \forall (x,y) \in \mathbb{R}^2
+    $$
+    De notar que ao considerarmos $(X,Y)(\omega)$, a imagem inversa integrante na condição de mensurabilidade é a seguinte:
+    $$
+        (X,Y)^{-1} = (]-\infty, x] \times ]-\infty, y]) = \{\omega \in \Omega: X(\omega) \leq x, Y(\omega) \leq y\}
+    $$
+
+    \vspace{0.5 em}
+\end{theo}
+
+\noindent Eis dois exemplos de pares aleatórios:
+\begin{itemize}
+    \item O número de sinais emitidos $(X)$ por um aparelho e o número desses sinais que foram recebidos $(Y)$ por um aparelho recetor --- par de v.a. contínuas.
+    \item A distância $(X)$ de um ponto de impacto ao centro de um alvo e o ângulo $(Y)$ com o eixo das abcissas --- par de v.a. contínuas.
+\end{itemize}
+
+\begin{mdframed}
+    \noindent \textbf{Função de distribuição conjunta de uma par aleatório} --- A f.d. conjunta de $(X,Y)$ é dada por:
+    $$
+        F_{X,Y}(x,y) = P(X \leq x, Y \leq y),\,\; (x,y) \in \mathbb{R}^2
+    $$
+
+    \noindent\textbf{Propriedades da função de distribuição conjunta de um par aleatório} --- A f.d. conjunta satisfaz as seguintes propriedades:
+    \begin{enumerate}[label=\textbf{\arabic*.}]
+        \item função contínua à direita com respeito aos argumentos $x$ e $y$.
+        \item função monótona não decrescente em qualquer das variàveis $x$ e $y$.
+        \item $0 \leq F_{X,Y}(x,y) \leq 1$
+        \item $F_{X,Y}(-\infty,-\infty) = \lim_{x,y \to -\infty} F_{X,Y}(x,y) = 0$
+        \item[] $F_{X,Y}(-\infty,y) = \lim_{x \to -\infty} F_{X,Y}(x,y) = 0$
+        \item[] $F_{X,Y}(x,-\infty) = \lim_{y \to -\infty} F_{X,Y}(x,y) = 0$
+        \item[] $F_{X,Y}(+\infty,+\infty) = \lim_{x,y \to \infty} F_{X,Y}(x,y) = 1$
+        \item $F_{X,Y}(x,+\infty) = \lim_{x,y \to +\infty} F_{X}(x)$
+        \item[] $F_{X,Y}(-\infty,y) = \lim_{x \to -\infty} F_{Y}(y)$
+    \end{enumerate}
+\end{mdframed}
+
+%//==============================--@--==============================//%

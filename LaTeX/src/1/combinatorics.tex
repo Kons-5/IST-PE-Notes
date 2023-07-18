@@ -1,0 +1,70 @@
+%//==============================--@--==============================//%
+\clearpage
+\subsection[1.3 Notas sobre análise combinatória]{\hspace*{0.075 em}\raisebox{0.2 em}{$\pmb{\drsh}$} Notas sobre análise combinatória}
+\label{subsec:combinatorics}
+
+Listamos abaixo alguns resultados respetivos a técnicas de contagem, cruciais no cálculo de probabilidades ao lidarmos com espaços de resultados finitos.
+
+\begin{enumerate}[label=$\bullet$]
+    \item \textbf{Permutações de \textit{n} elementos} \hfill $(n!)$
+    
+    \noindent Número de formas distintas de preenchimento de caixa com $n$ compartimentos, disponde de $n$ elementos e não havendo a possibilidade de repetição no preenchimento. \hfill {\small \textit{Sequências de $n$ elementos distintos}...}
+    
+    \item \textbf{Arranjos completos\footnotemark[5] de \textit{n} elementos tomados de \textit{x} a \textit{x}} \hfill $(n^x)$
+
+    \noindent Número de formas distintas de preenchimento de caixa com $x$ compartimentos, dispondo de $n$ elementos e havendo a possibilidade de repetição no preenchimento.
+
+    \vspace{-0.425em}
+    \hfill {\small \textit{Sequências de $x$ elementos}...}
+    
+    \item \textbf{Arranjos simples\footnotemark[6] de \textit{n} elementos tomados de \textit{x} a \textit{x}} \hfill $\left(\frac{n!}{(n-x)!}\right)$
+
+    \noindent Número de formas distintas de preenchimento de caixa com $x$ compartimentos, dispondo de $n$ elementos e não havendo possibilidade de repetição no preenchimento.
+
+    \vspace{-0.425em}
+    \hfill {\small \textit{Sequências de $x$ elementos distintos}...}
+    
+    \item \textbf{Combinações de \textit{n} elementos tomados de \textit{x} a \textit{x}} \hfill $\left(\binom{n}{x} = \frac{n!}{x!(n-x)!}\right)$
+
+    \noindent Número de conjuntos de cardinal $x$ (logo com elementos distintos) que podem ser formados com $n$ elementos. \hfill {\small \textit{Conjuntos de $x$ elementos distintos}...}
+    
+    \item \textbf{Permutações de \textit{n} elementos de \textit{k} tipos distintos} \hfill $\left(\frac{n!}{n_1!n_2!\dots n_k!}\right)$
+
+    \noindent Número de formas distintas de preenchimento de caixa com $n$ compartimentos, dispondo de $n$ elementos de $k$ tipos distintos, onde $n_i$ representa o número de elementos de tipo $i=1,2,\dots,k$, e $\sum_{i=1}^{k} n_i = n$. 
+    
+    \vspace{-0.425em}
+    \hfill {\small \textit{Sequências de $n$ elementos de $k$ tipos}...} 
+    
+    \item \textbf{Binómio de Newton}
+    $$
+        (a+b)^n = \sum_{x=0}^{n} \binom{n}{x} a^x b^{n-x}
+    $$
+
+    \begin{figure}[H]
+    \centering
+        \tightbox{
+            \begin{tabular}{>{$n=}l<{$\hspace{12pt}}*{13}{c}}
+                0 &&&&&&&1&&&&&&\\
+                1 &&&&&&1&&1&&&&&\\
+                2 &&&&&1&&2&&1&&&&\\
+                3 &&&&1&&3&&3&&1&&&\\
+                4 &&&1&&4&&6&&4&&1&&\\
+                5 &&1&&5&&10&&10&&5&&1&\\
+                6 &1&&6&&15&&20&&15&&6&&1
+            \end{tabular}
+            $$
+                \qquad\qquad\;\:\pmb{\dots}
+            $$
+        }
+        \caption{Triângulo de Pascal}
+    \end{figure}
+\end{enumerate}
+
+\footnotetext[5]{%
+    Ou arranjos \underline{\textit{com}} repetições.
+}
+\footnotetext[6]{%
+    Ou arranjos \underline{\textit{sem}} repetições.
+}
+
+%//==============================--@--==============================//%

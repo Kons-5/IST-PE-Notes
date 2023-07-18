@@ -1,0 +1,172 @@
+%//==============================--@--==============================//%
+\subsection[7.1 Modelo da Regressão Linear Simples]{\hspace*{0.075 em}\raisebox{0.2 em}{$\pmb{\drsh}$} Modelo da Regressão Linear Simples}
+
+\begin{mdframed}
+    É frequente estarmos interessados em estabelecer uma relação linear entre:
+    \begin{itemize}
+        \item Uma variável dependente ou resposta, $Y_i$ (aleatória) 
+        \item Uma variável independente (ou de controlo), $X_i$ (considera-se não aleatória)
+    \end{itemize}
+    A equação deste modelo é dada por
+    $$
+        \boxed{Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i, \quad i=1,\dots,n}
+    $$
+    onde:
+    \begin{itemize}
+        \item $Y_i =$ $i$-ésima resposta aleatória (v.a. dependente);
+        \item $x_i =$ $i$-ésima observação da variável explicativa ou regressora;
+        \item $\beta_0 =$ ordenada na origem do valor esperado da resposta (desconhecida);
+        \item $\beta_1 =$ declive do valor esperado da resposta (desconhecida);
+        \item $\varepsilon_i =$ erro aleatório associado à observação da $i$-ésima resposta.
+    \end{itemize}
+\end{mdframed}
+
+\noindent \textbf{1\textordmasculine{}. conjunto de hipóteses} de trabalho do modelo de regressão linear simples:
+\begin{itemize}
+    \item É costume assumir que os erros aleatórios $\varepsilon_i$ são v.a. não correlacionadas, i.e.,
+    
+    \hfil $\boxed{ corr(\varepsilon_i,\varepsilon_j)=0$, $i \neq j }$
+
+    De tal forma que $E(\varepsilon_i) = 0$ e $V(\varepsilon_i) = \sigma^2$, onde $\sigma^2$ é uma constante desconhecida. Consequentemente, para $i = 1,\dots,n$
+    $$
+        \begin{aligned}
+            E(Y_i) &= \beta_0 + \beta_1 x_i + E(\varepsilon_i) = \beta_0 + \beta_1 x_i \\
+            V(Y_i) &= V(\varepsilon_i) = \sigma^2
+        \end{aligned}
+    $$
+\end{itemize}
+
+%//==============================--@--==============================//%
+\subsubsection[7.1.1 Estimação de $\beta_0$ e $\beta_1$ --- Método dos Mínimos Quadrados]{$\pmb{\rightarrow}$ Estimação de $\pmb{\beta_0}$ e $\pmb{\beta_1}$ --- Método dos Mínimos Quadrados}
+
+\begin{quote} \small
+    ``A obtenção das estimativas dos mínimos quadrados de $\beta_0$ e $\beta_1$ passa pela minimização dos desvios entre o que é observado, $y_i$, e o que é \textit{esperado} de acordo com o modelo de RLS, $E(Y_i) = \beta_0 + \beta_1 x_i$.''\cite{Morais2020}
+\end{quote}
+
+% \vspace{-0.75em}
+\begin{mdframed}
+    \noindent Queremos encontrar as $\hat{\beta}_0$ e $\hat{\beta}_1$ que minimizem
+    $$
+        Q = Q(\beta_0, \beta_1) = \sum^{n}_{i=1} \left[y_i - (\beta_0 + \beta_1 x_i)\right]^2
+    $$
+    a soma dos quadrados dos desvios (verticais) entre $y_i$ e $\beta_0 + \beta_1 x_i$.
+\end{mdframed}
+
+{\setlength{\fboxsep}{1.75\fboxsep}%
+$$
+    (\hat{\beta}_0, \hat{\beta}_1) : \left\{
+    \begin{aligned}
+        \left.\frac{\partial Q}{\partial \beta_0}\right|_{\beta_0 = \hat{\beta}_0,\beta_1 = \hat{\beta}_1} &= 0 \\
+        \left.\frac{\partial Q}{\partial \beta_1}\right|_{\beta_0 = \hat{\beta}_0,\beta_1 = \hat{\beta}_1} &= 0 \\
+    \end{aligned}\right.
+    \qquad \implies \qquad \boxed{%
+    \begin{aligned}
+        \hat{\beta}_0 &= \bar{y} - \hat{\beta}_1 \bar{x} \\
+        \hat{\beta}_1 &= \frac{\sum^{n}_{i=1} x_i y_i - n \bar{x} \bar{y}}{\sum^{n}_{i=1} x^2_i - n \bar{x}} 
+    \end{aligned}}
+$$
+}
+
+%//==============================--@--==============================//%
+\subsubsection[7.1.2 Estimação de $\beta_0$ e $\beta_1$ --- Método do Máxima Verosimilhança]{$\pmb{\rightarrow}$ Estimação de $\pmb{\beta_0}$ e $\pmb{\beta_1}$ --- Método do Máxima Verosimilhança}
+
+As estimativas de MV de $\beta_0$ e $\beta_1$ requerem um \textbf{2\textordmasculine{}. conjunto de hipóteses} de trabalho
+\begin{itemize}
+    \item Assume-se, doravante, que 
+    $$\boxed{%
+        \varepsilon_i \overset{\text{i.i.d.}}{\sim} \text{normal}(0, \sigma^2), \quad i = 1,\dots,n
+    }$$
+    \noindent Então, para $i = 1,\dots,n$:
+    $$
+        \begin{aligned}
+            Y_i &= \beta_0 + \beta_1 x_i + \varepsilon)_i \overset{\text{indep}}{\sim} \text{normal}(\beta_0 + \beta_1 x_i, \sigma^2)\\
+            f_{Y_i | \beta_0,\beta_1}(y_i) &= (2\pi \sigma^2)^{-1/2} \exp{-\frac{1}{2\sigma^2}[y_i - (\beta_0 + \beta_1 x_i)]^2}
+        \end{aligned}
+    $$
+\end{itemize}
+
+\vspace{-0.75em}
+\begin{mdframed}
+    \begin{enumerate}[leftmargin=*, label=\textbf{\arabic*.}]
+        \item \textbf{Função de verosimilhança}
+        $$
+            \begin{aligned}
+                L(\beta_0, \beta_1 \,|\, \underbar{x},\underbar{y}) &= \prod^{n}_{i=1} f_{Y_i | \beta_0,\beta_1}(y_i) \\
+                &= \prod^{n}_{i=1} (2\pi \sigma^2)^{-1/2} \exp{-\frac{1}{2\sigma^2}[y_i - (\beta_0 + \beta_1 x_i)]^2}\\
+                &= (2\pi \sigma^2)^{-n/2} \exp{-\frac{1}{2\sigma^2}[y_i - (\beta_0 + \beta_1 x_i)]^2}
+            \end{aligned}
+        $$
+
+        \item \textbf{Função de log-verosimilhança}
+        $$
+            \begin{aligned}
+                \ln L(\beta_0, \beta_1 \,|\, \underbar{x},\underbar{y}) &= -\frac{n}{2}\ln(2\pi \sigma^2) - \frac{1}{\sigma^2} \sum^{n}_{i=1} [y_i - (\beta_0 + \beta_1 x_i)]^2 \\
+                &= -\frac{n}{2}\ln(2\pi \sigma^2) - \frac{1}{\sigma^2} Q
+            \end{aligned}
+        $$
+        em que $Q$ é como definido anteriormente.
+
+        \item \textbf{Maximização}
+
+        Note-se que $\ln L(\beta_0, \beta_1 \,|\, \underbar{x},\underbar{y})$ é uma função proporcional a $(-Q)$, e a sua maximização de $\beta_0$ e $\beta_1$ é equivalente à maximização de $Q$ que condiziu às estimativas
+        $$
+            \hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x} \quad \text{e} \quad
+            \hat{\beta}_1 = \frac{\sum^{n}_{i=1} x_i y_i - n \bar{x} \bar{y}}{\sum^{n}_{i=1} x^2_i - n \bar{x}}
+        $$
+    \end{enumerate}
+\end{mdframed}
+
+%//==============================--@--==============================//%
+\subsubsection[7.1.3 Reta de Regressão]{$\pmb{\rightarrow}$ Reta de Regressão}
+
+\begin{mdframed}
+    É usual estimar o valor esperado da resposta associada a um valor arbitrário $x$ da variável explicativa. A estimativa pontual de $E(Y|x) = \beta_0 + \beta_1 x$ é igual a
+    $$
+        \hat{y} = \widehat{E(Y|x)} = \hat{\beta}_0 + \hat{\beta}_1 x, \quad \text{para}\, x \in [x_{(1)}, x_{(n)}] 
+    $$
+    onde $x_{(1)} = \min_{i=1,\dots,n} x_i$, e $x_{(n)} = \max_{i=1,\dots,n} x_i$. A reta é usualmente designada por reta de regressão, reta ajustada ou \textit{estimated regression line}.
+\end{mdframed}
+
+\newpage
+%//==============================--@--==============================//%
+\subsection[7.2 Intervalos de Confiança e Testes de Hipótese para $\beta_0$, $\beta_1$ e $E(Y|x=x_0)$]{\hspace*{0.075 em}\raisebox{0.2 em}{$\pmb{\drsh}$} Intervalos de Confiança e Testes de Hipótese: $\pmb{\beta_0}$, $\pmb{\beta_1}$, $\mathbf{E(Y|x=x_0)}$}
+
+\begin{mdframed}
+    \begin{enumerate}[leftmargin=*,label=\textbf{\arabic*)}]
+        \item $\displaystyle T = \frac{\hat{\beta}_0 - \beta_0}{\sqrt{\displaystyle \frac{1}{n} + \frac{\bar{x}^2}{\sum^{n}_{i=1} x^2_i -n\bar{x}^2}}}$ \hfill $\begin{aligned} &\textbf{v.a. fulcral se:} \\ &\;i)\; \text{IC}_{(1-\alpha)}[\beta_0] \\ &ii)\;\text{Teste de hipótese para }\beta_0 \end{aligned}$
+
+        \item $\displaystyle T = \frac{\hat{\beta}_1 - \beta_1}{\sqrt{\displaystyle \frac{\sigma^2}{\sum^{n}_{i=1} x^2_i -n\bar{x}^2}}}$ \hfill $\begin{aligned} &\textbf{v.a. fulcral se:} \\ &\;i)\; \text{IC}_{(1-\alpha)}[\beta_1] \\ &ii)\;\text{Teste de hipótese para }\beta_1 \end{aligned}$
+
+        \textbf{Nota:} Testar a significância do modelo de regressão linear, $H_0 : \beta_1 = 0$, verifica se existe relação linear significante entre $y$ e $x$ \hfill {\small \textit{(se o $x$ não impacta o $y$)}}
+
+        \item $\displaystyle T = \frac{(\hat{\beta_0} + \hat{\beta_1} x_0) - (\beta_0 + \beta_1 x_0)}{\sqrt{\displaystyle \left(\frac{1}{n} + \frac{(\bar{x} - x_0)^2}{\sum^{n}_{i=1} x^2_i -n\bar{x}^2}\right) \hat{\sigma}^2}}$ \hfill $\begin{aligned} &\textbf{v.a. fulcral se:} \\ &\;i)\; \text{IC}_{(1-\alpha)}[E(Y|x_0)] \\ &ii)\;\text{Teste de hipótese para }E(Y|x_0) \end{aligned}$
+    \end{enumerate}
+\end{mdframed}
+
+%//==============================--@--==============================//%
+\subsection[7.3 Coeficiente de Determinação]{\hspace*{0.075 em}\raisebox{0.2 em}{$\pmb{\drsh}$} Coeficiente de Determinação}
+
+Para além de averiguarnis se o valor esperado da variável resposta ($Y$) depende linearmente da variável explicativa ($x$), é crucial verificar se a reta de regressão se ajusta bem ao conjunto de dados. Para o efeito, cingimo-nos a calcular o coeficiente de determinação.
+
+\begin{mdframed}
+    O coeficiente de determinação é definido por
+    $$
+        \begin{aligned}
+            r^2 &= \frac{\sum^{n}_{i=1} (\hat{y}_i - \bar{y})^2}{\sum^{n}_{i=1} (y_i - \bar{y})^2} \\
+            &= 1 - \frac{\sum^{n}_{i=1} (y_i - \hat{y}_i)^2}{\sum^{n}_{i=1} (y_i - \bar{y})^2} \\
+            &= \frac{(\sum^{n}_{i=1} x_i y_i - n \bar{x}\bar{y})^2}{(\sum^{n}_{i=1} x^2_i - n\bar{x}^2) \times (\sum^{n}_{i=1} y^2_i - n\bar{y}^2)}
+        \end{aligned}
+    $$
+    e dá uma ideia aproximada do ajustamento da reta de regressão aos dados. 
+    \begin{itemize}
+        \item $r^2 \in [0,1]$
+        \item $r^2 = 0$ $\rightarrow$ Não há relação linear entre $x$ e $y$
+        \item $r^2 = 1$ $\rightarrow$ Todos os pontos estão sobre a reta de regressão ($\hat{y}_i = y_i,$ $i=1,\dots,n$), pelo que o modelo de RLS explica toda a variação observada na variável resposta $Y$, logo o modelo de RLS ajustado é PERFEITO.\footnotemark[7]
+    \end{itemize}
+    Em particular $r^2 \times 100\%$ corresponde à percentagem da variação total da variável resposta $Y$ ($\sum^{n}_{i=1} (y_i - \bar{y})^2$) explicada pela variável regressora $x$ através do modelo de RLS estimado ($\sum^{n}_{i=1} (\hat{y}_i - \bar{y})^2$).
+\end{mdframed}
+
+\footnotetext[7]{%
+    No caso em que $n=2$ e $x_1 \neq x_2$, $r^2 = 1$, no entanto, o modelo de RLS pode não fazer qualquer sentido para explicar a relação entre as variáveis resposta e explicativa.
+}
+%//==============================--@--==============================//%

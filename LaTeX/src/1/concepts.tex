@@ -1,0 +1,243 @@
+\def\nLongleftarrow{/\mkern-25mu\Longleftarrow}
+%//==============================--@--==============================//%
+\subsection[1.1 Conceitos]{\hspace*{0.075 em}\raisebox{0.2 em}{$\pmb{\drsh}$} Conceitos}
+\label{subsec:concepts}
+%//==============================--~--==============================//%
+\subsubsection[1.1.1 Experiência Aleatória, Espaço de Resultados e Eventos]{$\pmb{\rightarrow}$ Experiência Aleatória, Espaço de Resultados e Eventos}
+
+\begin{theo}[\underline{Experiência Aleatória (e.a.)}]{def:exp-aleatoria}\label{def:exp-aleatoria}
+    Uma experiência diz-se aleatória se
+
+    \vspace{-1 em}
+    \begin{enumerate}[label=$\bullet$]
+        \item conhecermos \textit{a priori} todos os resultados possíveis da mesma,
+        \item não for possível predizer o seu resultado exato antes da sua realização,
+        \item for passível de se repetir, mesmo que hipoteticamente, nas mesmas condições ou em condições muito semelhantes.
+    \end{enumerate}
+
+    \noindent \textbf{Nota:} ao invés da primeira propriedade na definição, pode referir-se que ``\textit{os resultados obtidos ao cabo de uma longa repetição da experiência patenteiam impressionante regularidade estatística quando tomadas em conjunto}''\cite{Morais2020}.
+\end{theo}
+
+\begin{theo}[\underline{Espaço de Resultados}]{def:esp-resultados}\label{def:esp-resultados}
+    Conjunto de \underline{todos} os resultados possíveis de uma experiência aleatória; comummente denomidado por $\Omega$.\footnotemark[1] Adianta-se que $\Omega$ é:
+    
+    \vspace{-1 em}
+    \begin{enumerate}[label=$\bullet$]
+        \item \textbf{Discreto}, caso $\Omega$ seja (um conjunto com cardinal, \#$\Omega$) finito ou infinito numerável.
+        \item \textbf{Contínuo}, se $\Omega$ for finito não numerável.
+    \end{enumerate}
+\end{theo}
+
+\footnotetext[1]{Outras designações comuns são: \textit{conjunto fundamental}, \textit{espaço fundamental}, \textit{espaço-amostra}.\cite{Morais2020}}
+
+\begin{theo}[\underline{Evento ou Acontecimento}]{def:Evento-ou-Acontecimento}\label{def:evento}
+    Subconjunto do espaço de resultados $\Omega$. Possuem 3 classificaçãoes:
+    
+    \vspace{-1 em}
+    \begin{enumerate}[label=$\bullet$]
+        \item \textbf{Elementar}, caso seja um subconjunto singular de $\Omega$
+        \item \textbf{Certo}, se for idêntico ao espaço de resultados $\Omega$.
+        \item \textbf{Impossível}, quando pertence ao subconjunto nulo.
+    \end{enumerate}
+    
+    \noindent \textbf{Nota 1}: Qualquer conjunto é conjunto de si próprio. Consequentemente $\Omega$ também é um evento.
+
+    \noindent \textbf{Nota 2}: Quando um qualquer evento $A$ está contido (incluído) num qualquer evento $B$, a realização de $A$ implica $B$, mas o inverso não se verifica:
+    \begin{align*}
+        \text{realização de $A$} \Longrightarrow \text{realização de $B$}\\ 
+        \text{realização de $A$}\quad \nLongleftarrow \text{realização de $B$}
+    \end{align*}
+\end{theo}
+
+\begin{theo}[\underline{Eventos Dijuntos}]{def:eventos-dijuntos}\label{def:eventos-dis}
+    Quaisqueres dois eventos $A$ e $B$ dizem-se dijuntos (mutuamente exclusivos ou incompatíveis) sse a sua realização simultânea for impossível, $A\cap B = \emptyset$
+\end{theo}
+
+\newpage
+\begin{theo}[\underline{Operações sobre eventos}]{def:eventos-ops}\label{def:eventos-ops}
+    Seja $\Omega$ o espaço de resultados de uma experiência aleatória, e $A$ e $B$. Então, é possível efetuar operações sobre $A$ e $B$:
+
+    \vspace{1em}
+    {
+    \setlength{\tabcolsep}{16pt}
+    \renewcommand{\arraystretch}{1.25}
+    \noindent
+    \begin{tabularx}{\linewidth}{ l c X }
+        \toprule
+        \textbf{Operação} & \textbf{Notação} & \textbf{Descrição} \\
+        \midrule
+        Interseção & $A \cap B$ & Realização simultânea de $A$ e de $B$ \\
+        Reunião & $A \cup B$ & Realização de $A$ ou de $B$, i.e., de pelo menos um dos eventos \\
+        Diferença & $B \setminus A$ & Realização de $B$ sem que se realize $A$ ($B$ exceto $A$) \\
+        Complementação & $\bar{A}$ & Não realização de $A$ \\
+        \bottomrule
+    \end{tabularx}
+    }
+\end{theo}
+
+%//==============================--~--==============================//%
+\vspace{-1 em}
+\subsubsection[1.1.2 Definições de Probabilidade]{$\pmb{\rightarrow}$ Definições de Probabilidade}
+
+\begin{theo}[\underline{Probabilidade clássica de Laplace}]{def:Probabilidade-de-Laplace}\label{def:Prob-Laplace}
+    Considerando uma experiência aleatória com espaço de resultados $\Omega$ constituído por $n$ eventos elementares (\#$\Omega = n$) distintos, em número finito e igualmente prováveis. Considere-se ainda que a realização do evento $A$ passa pela ocorrência de $m$ dos $n$ eventos estipulados. A probabilidade de ocorrência de $A$ é dada por:
+    $$
+        P(A) = \dfrac{\text{número de casos favoráveis à ocorrência de A}}{\text{número de casos possíveis}} = \dfrac{m}{n}
+    $$
+    $\pmb{\rightarrow}$ Esta definição só é válida quando:
+
+    \vspace{-1 em}
+    \begin{enumerate}[label=$\bullet$]
+        \item $\#\Omega < +\infty$ (número de eventos elementares finitos)
+        \item $\Omega$ é constituído por eventos elementares igualmente equiprováveis.
+    \end{enumerate}
+\end{theo}
+
+\begin{theo}[\underline{Intrepertação frequencista da probabilidade}]{def:Intrep-Freq}\label{def:Intrep-Freq}
+    A probabilidade de um evento pode ser aproximada pela \textit{frequência relativa} deste evento ao fim de uma grande número $N$ de realizações da experiência aleatória (\textit{vide} método de Monte Carlo).
+    $$
+        P(A) \simeq f_N(A)
+    $$
+    \textbf{Def. Frequência Relativa:}
+    $$
+        f_N(A) = \dfrac{s_N(A)}{N},\qquad \text{onde $s_N$ é a \underline{frequência absoluta} do evento.}
+    $$
+
+    \vspace{-1 em}
+    \begin{enumerate}[label=$\bullet$]
+        \item $0 \leq f_N(A) \leq 1$
+        \item $f_N(\Omega) = 1$
+        \item $f_N(A)$ estabiliza (em torno de um valor fixo) à medida que N aumenta.
+    \end{enumerate}
+
+    \noindent \textbf{Nota:} A estabilidade referida acima não é de natureza trivial---não é possível admitir que $f_N(A)$ estabiliza em torno de um valor, já que a repetição da e.a. é de cariz finito.\footnotemark[2]
+\end{theo}
+
+\footnotetext[2]{``Não surpreende que sintamos a tentação de (...) escrever $P(A) = \lim_{N \to +\infty} f_N(A)$. Contudo, esta igualdade trata-se $[$apenas$]$ de uma \textit{idealização matemática.}}
+
+\noindent \textbf{Limitações da intrepertação frequencista da probabilidade:} Só é viável se for realizada mais que uma vez em condições idênticas. Não computa casos hipotéticos.
+
+\begin{theo}[\underline{Intrepertação subjetiva de probabilidade}]{def:subjetiva}\label{def:subjetiva}
+    Um indivíduo pode atribuir a um evento um número real no intervalo $[0,1]$, nomeado por \textit{probabilidade subjetiva} (do acontecimento), de acordo com o grau de credibilidade que lhe associa. Isto é, coerência $\iff$ verificação de um conjunto de \textit{axiomas}.
+
+    \vspace{1 em}
+    \noindent \textbf{Nota:} esta definição sugere uma não uniformidade de processos na atribuição de \textit{probabilidades subjetivas}. É necessário recorrer a uma definição mais \textit{geral e rigorosa} para a noção de \textit{probabilidade}.
+\end{theo}
+
+%//==============================--v--==============================//%
+\paragraph[1.1.2.1 Modelo probabilístico de Kolmogorov]{$\pmb{\star}$ Modelo probabilístico de Kolmogorov (1933)}\mbox{}\\
+Ora, o enunciado de tal definição requer que se defina a $\sigma-$álgebra sobre $\Omega$ e espaço mensurável.
+
+\begin{theo}[\underline{$\pmb{\sigma-}$álgebra sobre $\pmb{\Omega}$}]{def:sigma-algebra}\label{def:sigma-algebra}
+    $\mathcal{A}$ diz-se uma $\sigma-$álgebra sobre $\Omega$ caso se trate de:
+
+   \vspace{-1 em}
+    \begin{enumerate}[label=$\bullet$]
+        \item uma coleção não vazia de subconjuntos de $\Omega$,
+    \end{enumerate}
+
+    \vspace{-1em}
+    \noindent coleção esta não fechada para
+
+    \vspace{-1 em}
+    \begin{enumerate}[label=$\bullet$]
+        \item uniões numeráveis, interseções numeráveis e complementação.
+    \end{enumerate}
+
+    \noindent Conjunto mínimo de propriedades que garante que $\mathcal{A}$ é uma $\sigma-$álgebra sobre $\Omega$:
+
+    \vspace{-1 em}
+    \begin{enumerate}
+        \item $\Omega \in \mathcal{A}$;
+        \item $A \in \mathcal{A} \implies \bar{A} \in \mathcal{A},$ para qualquer $A \in \mathcal{A}$;
+        \item $\bigcup_{i=1}^{+\infty} A_i \in \mathcal{A},$ para qualquer coleção numerável $\{A_1, A_2,\dots\}$ de eventos de $\mathcal{A}$.
+    \end{enumerate}
+
+    \noindent \textbf{Nota:} A $\sigma-$álgebra (ou \textit{tribo de acontecimentos}) $\mathcal{A}$ pode ser entendida como uma coleção de eventos de $\Omega$ \textit{estável} (fechada) \textit{para as operações de conjuntos}, na medida em que nesta pertencem todos os eventos que entendamos pertinentes. É possível definir o \textit{evento} como qualquer conjunto $A$ pertencente a $\mathcal{A}$, a $\sigma-$álgebra sobre $\Omega$.\cite{Morais2020} 
+\end{theo}
+
+ \begin{theo}[\underline{$\pmb{\sigma-}$álgebra de Borel}]{def:sigma-algebra-borel}\label{def:sigma-algebra-borel}
+    A $\sigma-$álgebra de Borel definida para $\mathbb{R}$ é denotada por $\mathcal{B}(\mathbb{R})$ e \textit{gerada} pela classe de intervalos semifechados $\left\{ ]a,b]: -\infty < a < b < +\infty \right\}$.
+
+    \noindent Os elementos de $\mathcal{B}(\mathbb{R})$ são designados por \textit{conjuntos de Borel} ou borelianos.
+
+    \vspace{1 em}
+    \noindent \textbf{Nota:} Qualquer conjunto \textit{razoável} de $\mathbb{R}$ --- tais como conjuntos singulares ou numeráveis, intervalos fechados, abertos ou semifechados, semirretas, etc. --- pertencem a $\mathcal{B}(\mathbb{R})$.
+\end{theo}
+
+\begin{theo}[\underline{Espaço Mensurável}]{def:mensuravel}\label{def:mensuravel}
+    O par $(\Omega, \mathcal{A})$, constituido pelo espaço de resultados $\Omega$ dotado da $\sigma-$álgebra $\mathcal{A}$, é designado espaço mensurável (ou probabilizável).
+
+    \noindent Aos conjuntos pertencentes a $\mathcal{A}$ damos o nome de eventos mensuráveis (ou probabilizáveis).
+\end{theo}
+
+\noindent A \underline{probabilidade} é uma função cujos objetos são eventos. Mas deve ser uma função $\sigma-$aditiva.
+
+\begin{theo}[\underline{Função de Probabilidade}]{def:probability-function}\label{def:probability-function}
+    Seja $(\Omega, \mathcal{A})$ um espaço mensurável. Então, uma função $P(\cdot)$ definida sobre $\mathcal{A}$ diz-se uma função de probabilidade (no sentido de Kolmogorov), caso satisfaça os seguintes \textit{axiomas}:
+
+    \vspace{-1 em}
+    \begin{enumerate}
+        \item[(A1)] $P(A) \ge 0,\, \forall A \in \mathcal{A}$.
+        \item[(A2)] $P(\Omega) = 1$.
+        \item[(A3)] Seja $\{A_1, A_2, \dots\}$ uma coleção numerável de eventos disjuntos de $\mathcal{A}$ (isto é, $A_i \cap A_j = \emptyset$). Então,
+        $$
+            P\left( \bigcup_{i=1}^{+\infty} A_i \right) = \sum_{i=1}^{+\infty} P(A_i)  
+        $$
+    \end{enumerate}
+\end{theo}
+
+\begin{theo}[\underline{Espaço de Probabilidade}]{def:esp-probabilidade}\label{def:esp-probabilidade}
+    O terno $(\Omega, \mathcal{A}, P)$ é designado por espaço de probabilidade.
+\end{theo}
+
+\noindent \textbf{Consequências elementares dos axiomas:} Os axiomas estabelecem regras para o cálculo de probabilidades,
+
+\vspace{-0.75 em}
+\begin{enumerate}
+    \item[(i)] $P(\emptyset) = 0$;
+    \item[(ii)] $P(B \setminus A) = P(B) - P(A \cap B)$;
+    \item[(iii)] $P(\bar{A}) = 1 - P(A)$;
+    \item[(iv)] $A \in B \implies P(A) \leq P(B)$;
+    \item[(v)] $P(A) \leq 1$.
+\end{enumerate}
+
+\begin{theo}[\underline{Probabilidade da reunião de \textit{n} eventos\protect\footnotemark[3]}]{def:reunion}\label{def:reunion}
+    Sejam $A_1, \dots, A_n$ eventos quaisquer. Então,
+
+    \vspace{-1.5em}
+    \begin{align*}
+        P\left( \bigcup_{i=1}^{n} A_i \right) = \sum_{i=1}^{n}\: &P(A_i) - \sum_{i=1}^{n}\sum_{j=i+1}^{n} P(A_i \cap A_j) + \sum_{i=1}^{n}\sum_{j=i+1}^{n}\sum_{k=j+1}^{n} P(A_i \cap A_j \cap A_k) \\
+        &- \dots + (-1)^{n+1} P\left( \bigcap_{i=1}^{n} A_i \right)
+    \end{align*}
+
+    \noindent \textbf{Para a reunião de \underline{dois} eventos temos:}
+    \vspace{-0.75em}
+    $$
+        P(A \cup B) = P(A) + P(B) - P(A \cap B)
+    $$
+    
+    \vspace{-0.75em}
+    \noindent \textbf{Para a reunião de \underline{três} eventos temos:}
+    \vspace{-0.75em}
+    \begin{align*}
+        P(A \cup B \cup C) =\: &P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C)\\ &+ P(A \cap B \cap C)
+    \end{align*}
+\end{theo}
+
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+\footnotetext[4]{\underline{\textbf{Nota:}} Um evento pode ainda ser classificado como
+
+\vspace{-1.5 em}
+\begin{enumerate}
+    \item quase-certo --- se $P(A) = 1$ e, no entanto, $A \neq \Omega$;
+    \item quase-impossível --- caso $P(A) = 0$ mas $A \neq \emptyset$.
+\end{enumerate}%
+}
+\renewcommand*{\thefootnote}{\arabic{footnote}}
+
+\footnotetext[3]{%
+O resultado é designado por \textit{fórmula de Poincaré} ou \textit{princípio da inclusão-exclusão} (na versão probabilistica).\cite{Morais2020}
+}
+
+%//==============================--@--==============================//%

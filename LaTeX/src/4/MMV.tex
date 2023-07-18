@@ -1,0 +1,129 @@
+%//==============================--@--==============================//%
+\subsection[4.2 Método de Máxima Verosimilhança]{\hspace*{0.075 em}\raisebox{0.2 em}{$\pmb{\drsh}$}Método de Máxima Verosimilhança}
+
+\noindent\textbf{Estimador} --- É indespensável adiantar valores razoáveis para parâmetros desconhecidos que integram a nossa v.a. de interesse. Para tal, iremos recorrer a estatísticas especiais de nome \textit{estimadores}
+
+\begin{theo}[\underline{Estimadores}]{def:estim}\label{def:estim}
+    \noindent A estatística $T = T(\underline{X})$ diz-se estimador do parâmetro desconhecido $\theta$, caso a estatística $T = T(\underline{X})$ tome valores exclusivamente no espaço paramétrico $\Theta$.
+\end{theo}
+
+\vspace{-1.2em}
+\begin{theo}[\underline{Estimativa}]{def:estimativa}\label{def:estimativa}
+    \noindent Ao valor observado do estimador $T = T(\underline{X})$ do parâmetro desconhecido $\theta$, $t = T(\underline{x})$, damos o nome de estimativa de $\theta$.
+\end{theo}
+
+\noindent \textbf{Método de Máxima Verosimilhança} --- Este método permite obter o valor mais plausível/verosímil de um parâmetro deconhecido de entre todos os valores possíveis para esse mesmo parâmetro desconhecido --- tendo em conta a amostra $\underline{x} = (x_1, \dots, x_n)$.
+
+{
+\mdfsetup{linewidth=2pt}
+
+\begin{mdframed}
+    O parâmetro $\theta$ é desconhecido, mas $x_1,\dots, x_n$ são conhecidos. Então, qual é a melhor aproximação para $\theta$? O número que maximiza a probabilidade/densidade de obter a amostra realmente observada. O valor de $\theta$ mais compatível com os dados observados!
+\end{mdframed}
+}
+%//==============================--@--==============================//%
+\newpage
+\noindent Por forma a descrever o método da MV é necessário definir a função de verosimilhança
+
+\begin{theo}[\underline{Função de verosimilhança}]{def:func-vero}\label{def:func-vero}
+    \noindent É representada por $L(\theta | \underline{x})$, dá ideia de quão plausível é o valor $\theta$ para o parâmetro desconhecido, caso se tenha recolhido a amostra $\underline{x}$ e define-se do seguinte modo:
+    \begin{itemize}
+        \item no caso discreto, é dada por
+        $$
+            L(\theta | \underline{x}) = P(\underline{X} = \underline{x}\,|\,\theta) = \prod_{i = 1}^n P(X = x_i\, |\, \theta),\;\, \theta \in \Theta
+        $$
+
+        \item No caso contínuo é igual a 
+        $$
+            L(\theta\, |\, \underline{x}) = f_{\underline{X}}(\underline{x}\, |\, \theta) = \prod_{i = 1}^n f_X(x_i\, |\, \theta),\;\, \theta \in \Theta
+        $$
+    \end{itemize}
+    
+    \noindent Onde $P(\bullet\,|\, \theta)$ e $f_X(\bullet\,|\, \theta)$ representa a f.p. e a f.d.p (resp.) da v.a. de interesse $X$, tendo em conta que $\theta$ é o verdadeiro valor do parâmetro desconhecido.
+\end{theo}
+
+\noindent Quer o parâmetro desconhecido, quer o valor que se lhe possa atribuir são tradicionalmente representados por $\theta$.
+
+\vspace{1 em}
+\noindent $L(\theta\, |\, \underline{x})\,:\, \Theta \to \mathbb{R}$, i.e., a função de verosimilhança tem por argumento $\theta$, possui por domínio o espaço paramétrico $\Theta$ e toma valores em $\mathbb{R}$, para cada valor fixo da amostra de $\underline{x}$.
+
+\begin{theo}[\underline{Função de verosimilhança}]{def:func-vero-estim}\label{def:func-vero-estim}
+    \noindent Obtida a amostra $\underline{x} = (x_1, \dots, x_n)$, a estimativa de MV do parâmetro desconhecido $\theta$ --- representada doravante por $\hat{theta}$ --- corresponde ao ponto máximo da função de verosimilhança, i.e.,
+
+    $$
+        \hat{\theta}\,:\, L(\hat{\theta}\,|\, \underline{x}) = \underset{\theta \in \Theta}{\max}\, L(\theta\,|\,\underline{x})
+    $$
+\end{theo}
+
+\noindent\textbf{Função log-verosimilhança; estimativa de máxima verosimilhança}
+
+\vspace{1 em}
+\noindent\textbf{1.} É usual designar $\ln L(\theta\,|\, \underline{x})$ por função \textit{log-verosimilhança}
+
+\vspace{1 em}
+\noindent\textbf{2.} É analiticamente mais conveniente obter o ponto máximo de $\ln L(\theta\,|\, \underline{x})$ (uma soma de logaritmos), que determinar o ponto máximo de $L(\theta\,|\, \underline{x})$ (um produto). Uma vez que o logaritmo é uma função estritamente crescente em $\mathbb{R}^+$, podemos definir a estimativa de MV como o ponto máximo da função log-verosimilhança.
+
+$$
+    \boxed{\hat{\theta}\,:\, \ln L(\hat{\theta}\,|\, \underline{x}) = \underset{\theta \in \Theta}{\max} \ln L(\theta\,|\,\underline{x})}
+$$
+\noindent\textbf{3.} Caso o espaço paramétrico $\Theta$ seja contínuo, recorremos ao procedimento usual de maximização --- começamos por obter o ponto de estacionaridade para, de seguida, averiguarmos se tal ponto é efetivamente um ponto máximo. Ao lidarmos com um único parâmetro desconhecido, temos:
+
+$$
+    \begin{aligned}
+        \hat{\theta}\,:\, \dfrac{d\;\, \ln L(\hat{\theta}\,|\, \underline{x})}{d\theta}\Biggr|_{\theta = \hat{\theta}} &= 0\;\; \text{(ponto de estacionaridade)}\\[4pt]
+        \dfrac{d^2 \ln L(\hat{\theta}\,|\, \underline{x})}{d\theta^2}\Biggr|_{\theta = \hat{\theta}} &< 0 \;\; \text{(ponto de máximo)}
+    \end{aligned}
+$$
+
+\vspace{0.5em}
+\noindent\textbf{4.} Caso o espaço paramétrico $\Theta$ seja discreto, a estimativa de MV de $\theta$ obtém-se calculando os vários valores de $L(\hat{\theta}\,|\, \underline{x})$ para $\theta \in \Theta$, e identificando o ponto de máximo --- i.e., \textbf{faz-se por pesquisa ponto por ponto}.
+
+\vspace{1 em}
+\noindent A estimativa de MV é, naturalmente, uma função da amostra, i.e.,
+$$
+    \hat{\theta} = g(\underline{x})
+$$
+\noindent Além disso, não se trata de uma v.a. mas sim de uma concretização de uma v.a. com um nome particular \textit{estimador de MV}:
+
+\begin{theo}[\underline{Estimador de máxima verosimilhança}]{def:estim-MV}\label{def:estim-MV}
+    \noindent O estimador de MV de $\theta$ obtém-se por substituição de $\underline{x} = (x_1, \dots, x_n)$ por $\underline{X} = (X_1, \dots, X_n)$ na expressão geral da estimativa de MV de $\theta$, $\hat{\theta} = g(\underline{x})$. Ele será doravante representado por
+
+    $$
+        \boxed{\text{EMV}(\theta) = g(\underline{X})}
+    $$
+
+    \noindent Trata-se de uma v.a. exclusivamente dependente da a.a. $\underline{X}$, logo, uma estatística.
+\end{theo}
+
+\vspace{-1 em}
+\begin{theo}[\underline{Propriedade de invariância do estimador de máxima verosimilhança}]{def:estim-MV-inv}\label{def:estim-MV-inv}
+    \noindent Sejam:
+    \begin{itemize}
+        \item $\hat{\theta}$ a estimativa de MV de $\theta$.
+        \item EMV$(\theta)$ o estimador de MV de $\theta$.
+        \item $h(\theta)$ uma função bijetiva.
+    \end{itemize}
+
+    \noindent Então, a estimativa de MV de $h(\theta)$ é dada por
+    $$
+        \widehat{h(\theta)} = h(\hat{\theta})
+    $$
+
+    \noindent e o estimador de MV de $h(\theta)$ por
+    $$
+        \text{EMV}[h(\theta)] = h[\text{EMV}(\theta)]
+    $$
+\end{theo}
+
+\noindent\textbf{Nota:} O estimador MV de $\theta$ não é único caso lidemos, por exemplo, com um modelo uniparamétrico. Supondo $\underline{X} \sim \text{uniforme}(\theta - 1/2, \theta + 1/2)\,:\, \theta \in \mathbb{R}$, a respetiva função MV pode ser escrita como:
+
+$$
+    L(\theta\, |\, \underline{x}) = \left\{\begin{array}{ll}
+          1 & \max(x_1, \dots, x_n) - 1/2 \leq \theta \leq \min(x_1, \dots, x_n) + 1/2\\
+         0 & \text{cc}
+    \end{array}
+    \right.
+$$
+
+\noindent Podemos selecionar qualquer valor no intervalo $[\max(x_1,\dots, x_n) - 1,\, \min(x_1,\dots,x_n)]$ como estimativa MV para $\theta$. O estimador de MV não é unicamente especificado.
+%//==============================--@--==============================//%

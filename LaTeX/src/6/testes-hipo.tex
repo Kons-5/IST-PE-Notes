@@ -1,0 +1,268 @@
+%//==============================--@--==============================//%
+\noindent O teste de hipótese visa verificar se uma dada amostra contém ou não informação que deve ser aceite (ou não) no cálculo de parâmetros desconhecidos.
+
+\begin{theo}[\underline{Hipótese paramétrica}]{def:hip-para}\label{def:hip-para}
+    \noindent Trata-se de conjetura sobre um parâmetro desconhecido $\theta$, assumindo que se conhece a distribuição da v.a. de interesse $X$ a menos de $\theta$
+\end{theo}
+
+\vspace{-1em}
+\begin{theo}[\underline{Hipótese nula/alternativa}]{def:null-alter}\label{def:null-alter}
+    \noindent Ao confrontarmos dias hipóteses paramétricas:
+    \begin{itemize}
+        \item a hipótese mais relevante é usualmente designada por hipótese nula, é representada por $H_0$ e correspondente a $H_0\,:\, \theta \in \Theta_0$
+        \item $H_1\,:\, \theta \in \Theta_1$ é designada por hipótese alternativa
+    \end{itemize}
+
+\noindent Nomeadamente, por exemplo:
+
+$$
+    \begin{aligned}
+        H_0\,:\, \mu = \mu_0\\
+        H_1\,:\, \mu \neq \mu_0
+    \end{aligned}
+$$
+
+\noindent e neste caso a hipótese alternativa é denominada de \textbf{bilateral}
+$$
+    \begin{aligned}
+        &H_0\,:\, \mu = \mu_0\\
+        &H_1\,:\, \mu > \mu_0 \text{ ou }\mu < \mu_0
+    \end{aligned}
+$$
+
+\noindent e neste caso a hipótese alternativa é denominada de \textbf{unilateral}
+\end{theo}
+
+\vspace{-1em}
+\begin{theo}[\underline{Erros de 1ª e 2ª espécie} (tipo I e tipo II)]{def:erros}\label{def:erros}
+    \noindent As probabilidades de ocorrência de erros da 1ª e 2ª espécie costumam ser representadas por $\alpha$ ou $\beta$ e definem-se do seguinte modo:
+
+    $$
+        \begin{aligned}
+            &\alpha = P(\text{Erro de 1ª espécie}) = P(\text{Rejeitar }H_0\,|\, H_0)\\
+            &\beta = P(\text{Erro de 2ª espécie}) = P(\text{Não rejeitar }H_0\,|\, H_1)
+        \end{aligned}
+    $$
+\end{theo}
+
+\vspace{-1em}
+\begin{theo}[\underline{Nível de significância}]{def:significance-level}\label{def:significance-level}
+    \noindent O teste de hipóteses deve ser delineado de modo a que se verifique
+    $$
+        P(\text{Rejeitar }H_0\,|\, H_0) \leq \alpha_0
+    $$
+
+    \noindent Onde $a_0$ é designado por nível de significância (congruente com o grau de confiança).
+\end{theo}
+
+\noindent \textbf{Região de Rejeição de $\mathbf{H_0}$} (para valores de estatística de teste) --- É habitual escolhermos esta região de modo a que:
+
+\vspace{0.5em}
+\begin{itemize}[nolistsep] \small
+    \item $W$ satisfaça a condição $P(\text{Rejeitar }H_0\,|\, H_0) = P(T \in W\,|\, H_0) = \alpha_0$ (onde $T$ é designada por estatística de teste).
+    \item $W$ seja um intervalo real (ou uma reunião de intervalos reais) que depende de quantis de probabilidade relacionada com $\alpha_0$ e que digam respeito à distribuição exata ou aproximada da estatística de teste sob a validade de $H_0$.
+    \item O aspeto de $H_0$ depende da hipótese alternativa $H_1$ e do que significa obter valores inconsistentes com $H_0$.
+\end{itemize}
+
+\newpage
+\noindent É relevante expor um esqueleto para o procedimento geral de testes de hipótese:
+
+\begin{theo}[\underline{Procedimento geral de testes de hipótese}]{def:significance-level}\label{def:significance-level}
+    \noindent Efetuar um teste de hipóteses compreende os sete passos seguintes:
+    \begin{enumerate}
+        \item \textbf{V.a. de interesse}
+
+        Identificar a v.a. de interesse
+
+        \item \textbf{Situação}
+
+        \noindent Tal como no cálculo dos intervalos de confiança, é necessário adiantar a distribuição da v.a. de interesse, o parâmetro desconhecido que está a ser testado, bem como outros possíveis parâmetros desconhecidos (ou conhecidos), com vista a escolher a variável fulcral apropriada.
+
+        \item \textbf{Hipóteses}
+
+        Enunciar as hipóteses nula e alternativa, de forma análoga à especificada \hyperref[def:null-alter]{acima}.
+
+        \item \textbf{Nível de significância}
+
+        Escolher o nível de significância (tipicamente dado, caso contrário recorrer ao \textit{p-value})
+
+        \item \textbf{Estatística de teste}
+
+        Selecionar a estatatística de teste adequada ($T$) e identificar a sua distribuição (exata ou aproximada) sob $H_0$
+        $$
+            T \overset{H_0}{\sim} \text{distribuição}
+        $$
+        Onde T é definida de forma análoga à realizada nos intervalos de confiança, com recurso à variável fulcral adequada (cujo o processo de escolha em nada difere do capítulo anterior).
+
+        \item \textbf{Região de Rejeição}
+
+        Identificar a região de rejeição de $H_0$ para valores da estatística de teste:
+        $$
+            \left\{\begin{array}{ll}
+                 c = F_Z^{-1}(1 - \alpha_0/2) & \text{caso bilateral}\; ]\,-\infty, -c\,[ \cup ]\,c, +\infty\,[\\[4pt]
+                 c = F_Z^{-1}(\alpha_0) & \text{caso unilateral esquerdo}\; ]\,-\infty, -c\,[\\[4pt]
+                 c = F_Z^{-1}(1 - \alpha_0) & \text{caso unilateral direito}\; ]\,c, \infty\,[
+            \end{array}\right.
+        $$
+
+        \item \textbf{Decisão}
+
+        Calcular o valor observado da estatística de teste (t) e decidir pela rejeição ou não de $H_0$ ao nível de significância $\alpha_0$.
+    \end{enumerate}
+\end{theo}
+
+\noindent \textbf{Nota:} Uma qualquer hipótese que seja rejeitado para um dado nível de significância, será rejeitado para qualquer outro superior a este. De forma idêntica, qualquer hipótese que não seja rejeitado para um dado nível de significância, não será rejeitado para qualquer outro inferior a este.
+%//==============================--@--==============================//%
+\newpage
+\subsection[6.1 Cálculo do valor-p]{\hspace*{0.075 em}\raisebox{0.2 em}{$\pmb{\drsh}$} Cálculo do valor-p}
+
+\begin{theo}[\underline{Valor-p}]{def:p-value}\label{def:p-vlue}
+    \noindent O valor-p é o maior nível de significância que leva à não rejeição de $H_0$
+\end{theo}
+
+\noindent O cálculo do valor-p depende do aspeto da região de $H_0$ (para valores da estatística de teste) e da concretização da estatística de teste, (valor que delimita a área de rejeição), tal como se evidencia abaixo:
+
+\vspace{0.25em}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{.315\textwidth}
+        \begin{scaletikzpicturetowidth}{\textwidth}
+        \begin{tikzpicture}[scale=\tikzscale]
+            \begin{axis}[
+                domain=-4:4,
+                samples=100,
+                no markers,
+                axis y line = none,
+                axis x line = middle,
+                xlabel=$t$,
+                ylabel=$f(t)$,
+                xtick={-1.645,1.645},
+                xticklabels={$-|t|$, $|t|$},
+                xticklabel style={text height=1.5ex},
+                ytick=\empty,
+                enlargelimits=false,
+                clip=false,
+                axis on top,
+                grid = none,
+                height=6cm,
+                width=10cm,
+                ]
+                \addplot [fill=gray!50, draw=none, domain=-4:-1.645] {exp(-x^2/2)/sqrt(2*pi)} \closedcycle;
+                \addplot [fill=gray!50, draw=none, domain=1.645:4] {exp(-x^2/2)/sqrt(2*pi)} \closedcycle;
+                \addplot[black, thick] {exp(-x^2/2)/sqrt(2*pi)};
+                
+                \node at (axis cs:-2.7,0.1) {$\dfrac{\text{valor-p}}{2}$};
+                \node at (axis cs:2.7,0.1) {$\dfrac{\text{valor-p}}{2}$};
+            \end{axis}
+        \end{tikzpicture}
+        \end{scaletikzpicturetowidth}%
+
+        %// CAPTION //%
+        \caption{%
+            \textbf{Hipótese $\mathbf{H_1}$ bilateral} \\
+            $P(|T| < |t|) = 2 \times [1 - F_{T | H_0}(|t|)]$
+        }
+    \end{subfigure}\hfill
+    \begin{subfigure}[b]{.315\textwidth}
+        \begin{scaletikzpicturetowidth}{\textwidth}
+        \begin{tikzpicture}[scale=\tikzscale]
+            \begin{axis}[
+                domain=-4:4,
+                samples=100,
+                no markers,
+                axis y line = none,
+                axis x line = middle,
+                xlabel=$t$,
+                ylabel=$f(t)$,
+                xtick={-1.645,1.645},
+                xticklabels={$-|t|$, $|t|$},
+                xticklabel style={text height=1.5ex},
+                ytick=\empty,
+                enlargelimits=false,
+                clip=false,
+                axis on top,
+                grid = none,
+                height=6cm,
+                width=10cm,
+                ]
+                \addplot [fill=gray!50, draw=none, domain=-4:-1.645] {exp(-x^2/2)/sqrt(2*pi)} \closedcycle;
+                \addplot[black, thick] {exp(-x^2/2)/sqrt(2*pi)};
+                
+                \node at (axis cs:-2.7,0.1) {$\text{valor-p}$};
+            \end{axis}
+        \end{tikzpicture}
+        \end{scaletikzpicturetowidth}%
+
+        %// CAPTION //%
+        \caption{%
+            \textbf{Hipótese $\mathbf{H_1}$ unilateral esq.} \\
+            $P(T < t\,|\, H_0) = F_{T\,|\, H_0}(t)$
+        }
+    \end{subfigure}\hfill
+    \begin{subfigure}[b]{.315\textwidth}
+        \begin{scaletikzpicturetowidth}{\textwidth}
+        \begin{tikzpicture}[scale=\tikzscale]
+            \begin{axis}[
+                domain=-4:4,
+                samples=100,
+                no markers,
+                axis y line = none,
+                axis x line = middle,
+                xlabel=$t$,
+                ylabel=$f(t)$,
+                xtick={-1.645,1.645},
+                xticklabels={$-|t|$, $|t|$},
+                xticklabel style={text height=1.5ex},
+                ytick=\empty,
+                enlargelimits=false,
+                clip=false,
+                axis on top,
+                grid = none,
+                height=6cm,
+                width=10cm,
+                ]
+                \addplot [fill=gray!50, draw=none, domain=1.645:4] {exp(-x^2/2)/sqrt(2*pi)} \closedcycle;
+                \addplot[black, thick] {exp(-x^2/2)/sqrt(2*pi)};
+                
+                \node at (axis cs:2.7,0.1) {$\text{valor-p}$};
+            \end{axis}
+        \end{tikzpicture}
+        \end{scaletikzpicturetowidth}%
+
+        %// CAPTION //%
+        \caption{%
+            \textbf{Hipótese $\mathbf{H_1}$ unilateral dir.} \\
+            $P(T > t\,|\, H_0) = 1 - F_{T\,|\, H_0}(t)$
+        }
+    \end{subfigure}%
+    \label{fig:p-value-find}
+\end{figure}
+
+\noindent \textbf{Nota:} Caso a distribuição da v.a. de interesse não seja simétrica, (e.g. qui-quadrado $\chi^2$), e a hipótese alternativa seja bilateral, o valor-p passa a ser definido da seguinte maneira:
+
+$$
+    \text{valor-p} = 2 \times \boxed{\min \left\{P(T < t\,|\, H_0)\,,\, P(T > t\,|\, H_0)\right\}}
+$$
+
+\begin{theo}[\underline{Teste de ajustamento do qui-quadrado} (hipótese nula simples)]{def:teste-ajusta-qui}\label{def:teste-ajusta-qui}
+    \noindent Quando conjeturamos uma única distribuição para a v.a. de interesse $X$, a estatística a utilizar neste teste de ajustamento é
+
+    $$
+        T = \sum_{i=1}^{k} \dfrac{(O_i - E_i)}{E_i} \overset{a}{\sim}_{H_0} \mathcal{X}^2_{k - 1}
+    $$
+
+    \noindent onde $k$, $O_i$ e $E_i$ representam o número de classes que constam na tabela de frequências, a frequência absoluta observável da classe $i$ e a frequência absoluta esperada sob $H_0$ da classe $i$ respetivamente. Salienta-se que:
+
+    $$
+        O_i \sim \text{binomial}(n, p_i)\quad \rightarrow E_i = n P(X \in \text{classe}\,|\, H_0) = n\, p_i^0
+    $$
+    
+    \noindent A região de rejeição da hipótese nula simples $H_0$ é o intervalo à direita onde
+    $$
+        W = ]c\,,\, +\infty[ \quad \text{onde}\quad c = F^{-1}_{\chi^2_{k - 1}}(1 - \alpha_0)
+    $$
+
+    \noindent pois quanto maiores as discrepâncias entre frequências absolutas observadas e esperadas sob $H_0$ das classes, maior é o valor observado da estatística de teste e menos consistente é a hipótese $H_0$ com os dados recolhidos
+\end{theo}
+
+%//==============================--@--==============================//%

@@ -1,0 +1,85 @@
+%//==============================--@--==============================//%
+\noindent \textbf{Intervalo de Confiança} --- É importante adiantar um intervalo de valores razoáveis para $\theta$ que dê uma ideia da confiança que se pode depositar na estimativa pontual de $\theta$. Este intervalo será definido oportunamente e é denominado de intervalo de confiança (\textbf{IC}). Os valores mais usuais para o grau de confiança de um \textbf{IC} são $90\%$, $95\%$ e $99\%$.
+
+
+\begin{theo}[\underline{Intervalo (aleatório) de confiança}]{def:IAC-IC}\label{def:IAC-IC}
+    \noindent Admitimos que $\underline{X} = (X_1, \dots, X_n)$ representa uma a.a. proveniente da população $X$, cuja distribuição depende do parâmetro desconhecido $\theta\, (\theta \in \Theta)$. Sejam $T_1 = T(\underline{X})$ e $T_2 = T_2(\underline{X})$ duas estatísticas tais que $T_1 < T_2$ e 
+    $$
+        P(T_1 \leq \theta \leq T_2) = 1 - \alpha,\;\; \forall \theta \in \Theta
+    $$
+    \noindent onde $\alpha \in (0,1)$. O intervalo
+    $$
+        [T_1, T_2] = [T_1(\underline{X}), T_2(\underline{X})]
+    $$
+    \noindent é designado intervalo aleatório de confiança (\textbf{IAC}) a $(1 - \alpha) \cdot 100 \%$ para $\theta$. Ao dispormos de uma amostra $\underline{x} = (x_1, \dots, x_n)$, obtemos uma concretização de $[T_1(\underline{X}), T_2(\underline{X})]$, seja ela  
+    $$
+        [t_1, t_2] = [T_1(\underline{x}), T_2(\underline{x})]
+    $$
+    \noindent que designamos por intervalo de confiança a $(1 - \alpha) \cdot 100 \%$ para $\theta$ e prepresentaremos por $IC_{(1 - \alpha) \cdot 100 \%}(\theta)$
+\end{theo}
+
+\noindent É necessário adiantar um método de obtenção sistemático de IC para um parâmetro aleatório $\theta$. Para tal, será necessário introduzir a noção de \textbf{v.a. fulcral}
+
+\begin{theo}[\underline{V.a.  fulcral}]{def:va-fulcral}\label{def:va-fulcral}
+    \noindent Uma v.a. que depende exclusivamente da a.a. $\underline{X}$ e do parâmetro desconhecido $\theta$
+    $$
+        Z = Z(\underline{X}, \theta)
+    $$
+
+    \vspace{-1 em}
+    \noindent diz-se uma v.a. fulcral para $\theta$ caso possua distribuição (exata ou aproximada) independente de $\theta$, ou de qualquer outro parâmetro desconhecido que possa existir.
+\end{theo}
+
+\vspace{-1em}
+\begin{theo}[\underline{Método da v.a.  fulcral}]{def:metodo-va-fulcral}\label{def:metodo-va-fulcral}
+    \noindent Antes de tudo é crucial descrever a situação com que lidamos, nomeadamente, v.a. de interesse e respetiva distribuição; o parâmetro desconhecido alvo do IC; outros parâmetros conhecidos (ou não) da distribuição. Posto isto:
+
+    \begin{itemize}
+        \item \textbf{Passo 1 --- Seleção da variável fulcral}
+
+            A v.a. fulcral para $\theta$ é por regra uma função trivial dos estimador de MV $\theta$.
+        \item \textbf{Passo 2 --- Obtenção dos quantis de probabilidade}
+
+            O par de quantis depende do grau de confiança $(1 - \alpha) \cdot 100 \%$ e será representado por 
+            $a_\alpha$ e $b_\alpha$. De um modo geral:
+            $$
+                (a_\alpha, b_\alpha)\, :\, \left\{\begin{array}{ll}
+                     P(a_\alpha \leq Z \leq b_\alpha) = 1 - \alpha\\
+                     P(Z < a_\alpha) = P(Z > b_\alpha) = \alpha/2
+                \end{array}\right.\iff
+                \left\{\begin{array}{ll}
+                     a_\alpha = F_Z^{-1}(\alpha/2)\\
+                     b_\alpha = F_Z^{-1}(1 - \alpha/2)
+                \end{array}\right.
+            $$
+    \end{itemize}
+\end{theo}
+
+
+{
+\mdfsetup{linewidth=2pt}
+
+\begin{mdframed}
+    \noindent (Continuação)
+    \begin{itemize}
+         \item \textbf{Passo 3 --- Inversão da desigualdade $\mathbf{a_\alpha \leq Z \leq b_\alpha}$}
+
+         De modo a obtermos um IAC que contenha $\{\theta\}$ com probabilidade $(1 - \alpha)$ é crucial invertermos a dupla desigualdade $a_\alpha \leq Z \leq b_\alpha$ em ordem a $\theta$
+         $$
+            P(a_\alpha \leq Z \leq b_\alpha) = 1 - \alpha
+            \quad\rightarrow\quad
+            P[T_1(\underline{X}), T_2(\underline{X})] = 1 - \alpha
+         $$
+
+         \noindent onde $T_1$ e $T_2$ são dois extremos aleatórios dependentes quer da a.a. $\underline{X}$, quer dos quantis de probabilidade $a_\alpha$ e $b_\alpha$
+         
+        \item \textbf{Passo 4 --- Concretização}
+
+        \noindent Basta agora substituir as v.a. pelas respetivas observações, $x_1,\dots,x_n$ para obter o $IC_{(1 - \alpha) \cdot 100 \%}(\theta)$.
+        $$
+            IC_{(1 - \alpha) \cdot 100 \%}(\theta) = [T_1(\underline{x}), T_2(\underline{x})]
+        $$
+    \end{itemize}
+\end{mdframed}
+}
+%//==============================--@--==============================//%

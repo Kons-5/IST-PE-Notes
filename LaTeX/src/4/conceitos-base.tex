@@ -1,0 +1,136 @@
+%//==============================--@--==============================//%
+\subsection[4.1 Conceitos base sobre estatística]{\hspace*{0.075 em}\raisebox{0.2 em}{$\pmb{\drsh}$} Conceitos base sobre estatística}
+
+\noindent De seguida enumeram-se de forma sucinta, um conjunto de conceitos referentes à estatística:
+
+\begin{theo}[\underline{População e Amostra}]{def:pop-amo}\label{def:pop-amo}
+
+    \noindent\textbf{População} --- conjunto de todas as boservações possíveis de determinada variável de interesse $X$
+
+    \vspace{1 em}
+    \noindent \textbf{Amostra} --- subconjunto de valores da população. Selecionada de forma aleatória e representativa da população de onde foi retirada.
+\end{theo}
+
+\noindent \textbf{Inferência estatística} --- O estudo de uma amostra de uma população é designada por inferência estatística. são admitidos dois níveis de ignorância em relação ao conhecimento da população em estudo:
+
+{
+\mdfsetup{linewidth=2pt}
+
+\begin{mdframed}
+    \begin{itemize}[leftmargin=*]
+        \item $F_X(x)$ é \textbf{completamente desconhecida}, sabendo-se apenas se é do tipo contínuo ou discreto.
+    
+        \item Admite-se (pelo conhecimento dos fenómenos em causa) que $F_X(x)$ pertence a determinada família, mas com \textbf{parâmetros desconhecidos}
+    \end{itemize}
+\end{mdframed}
+}
+
+\noindent \textbf{Amostragem aleatória} --- Para que as inferências sejam rigorosas é natural que o processo de recolha de informação seja fruto do acaso.
+
+\begin{theo}[\underline{Amostra aleatória}]{def:am-al}\label{def:am-al}
+    \noindent Sejam:
+    \begin{itemize}
+        \item $X$ uma v.a. de interesse
+        \item $X_1, \dots, X_n$ v.a. independendentes e identicamente distribuídas (i.i.d) a $X$, i.e., $X_i \overset{i.i.d}{\sim} X, i = 1,\dots, n\;\, (n \in \mathbb{N})$.
+    \end{itemize}
+
+    \noindent Então o vetor aleatório
+    \begin{itemize}
+        \item $\underbar{X} = (X_1, \dots, X_n)$ diz-se uma amostra aleatória (a.a.) de dimensão $n$ proveniente da população $X$
+    \end{itemize}
+\end{theo}
+
+\begin{theo}[\underline{Amostra}]{def:am}\label{def:am}
+    \noindent A uma observação particular da a.a. $\underbar X = (X_1, \dots, X_n)$ dá-se o nome de amostra e representa-se por $\underbar x = (x_1, \dots, x_n)$
+\end{theo}
+
+\noindent\textbf{Nota:} Convém recordarmos que a a.a. $\underbar X = (X_1, \dots, X_n)$ é um vetor $n$-dimensional e que o mesmo não acontece com a amostra $\underbar x = (x_1, \dots, x_n)$, que é um vetor de $\mathbb{R}^n$
+%//==============================--@--==============================//%
+\newpage
+\begin{theo}[\underline{Caracterização da amostra aleatória}]{def:car-am-al}\label{def:car-am-al}
+    \noindent A caracterização da a.a. é realizada sem grande dificuldade, já que é constituída por $n$ v.a. independentes e identicamente distribuídas de $X$. Neste sentido temos:
+
+    \begin{itemize}
+        \item Discreto --- f.p. conjunta de $\underbar{X}$
+        $$
+            \boxed{%
+            \begin{aligned}
+                P(\underbar{X} = \underbar{x}) &= P(X_1 = x_1, \dots, X_n = x_n)\\
+                &\mkern-18mu\overset{X_i \textit{ indep}}{=} \prod_{i = 1}^{n} P(X_i = x_i)\\
+                &\mkern-10.5mu\overset{X_i \sim X}{=} \prod_{i = 1}^{n} P(X = x_i)
+            \end{aligned}
+            }
+        $$
+
+        \item Contínuo --- f.d.p. conjunta de $\underbar{X}$
+        $$
+            \boxed{%
+            \begin{aligned}
+                P(\underbar{X} = \underbar{x}) &= f_{X_1, \dots, X_n}(x_1, \dots, x_n) \\
+                &\mkern-16mu\overset{X_i \textit{indep}}{=} \prod_{i = 1}^{n} f_{X_i}(x_i) \\
+                &\mkern-11mu\overset{X_i \sim X}{=} \prod_{i = 1}^{n} f_{X}(x_i)
+            \end{aligned}
+            }
+        $$
+    \end{itemize}
+\end{theo}
+
+\noindent\textbf{Valor esperado e Variância} --- Neste seguimento, o cálculo do valor médio e variância para a média da a.a. é efetuado do seguinte modo (denotando que as $n$ v.a. são i.i.d):
+
+{
+\mdfsetup{linewidth=2pt}
+
+\begin{mdframed}
+   \noindent \textbf{Valor esperado:}
+
+    $$
+        \begin{aligned}
+            E(\overline{X}) &= E\left(\frac{1}{n}\sum_{i=1}^n X_i\right)\\
+            &= \dfrac{1}{n} \cdot n \cdot E(X)\\
+            &= E(X)
+        \end{aligned}
+    $$
+
+    \noindent \textbf{Variância:}
+    $$
+        \begin{aligned}
+            V(\overline{X}) &= V\left(\frac{1}{n}\sum_{i=1}^n X_i\right)\\
+            &= \dfrac{1}{n^2} \cdot n \cdot V(X)\\[4pt]
+            &= \dfrac{V(X)}{n}
+        \end{aligned}
+    $$
+\end{mdframed}
+}
+
+\noindent\textbf{Estatística} --- É fundamental e conveniente condensar a informação amostral (dados) em medidas sumárias como a média, o desvio padrão da amostra ou outras medidas estudadas em estatística descritiva. Estas medidas mais não são que valores particulares de v.a. definidas à custa da a.a. e denominadas estatísticas.
+
+\newpage
+\begin{theo}[\underline{Estatística}]{def:est}\label{def:esst}
+    \noindent Seja $\underline{X} = (X_1, \dots, X_n)$ uma a.a. de dimensão $n$ proveniente da população $X$. Então $T$ diz-se uma estatística caso se trate de uma função (Borel mensurável) da a.a., $T = T(\underline{X})$, que não envolva qualquer parâmetro desconhecido.
+\end{theo}
+
+\noindent \textbf{Alguns Exemplos de estatísticas:}
+\begin{itemize}
+    \item \textbf{Média amostral}
+    $$
+        \overline{X} = \dfrac{X_1 + X_2 + \dots + X_n}{n} = \dfrac{\sum_{i = 1}^n X_i}{n}
+    $$
+
+    \noindent Dada uma amostra concreta $(x_1, x_2, \dots, x_n)$, podemos calcular o valor da sua média $\overline{x} = (x_1, x_2, \dots, x_n)/n$ que será um valor observado (ou uma ocorrência, ou ainda uma concretização) da v.a. $\overline{X}$.
+
+    \item \textbf{Variância amostral}
+    $$
+        S^2 = \dfrac{1}{n - 1}\sum_{i = 1}^n (X_i - \overline{X}_n)^2
+    $$
+
+    A variância de uma amostra concreta 
+    $$
+        s^2 = \dfrac{1}{n - 1}\sum_{i = 1}^n (x_i - \overline{x}_n)^2
+    $$
+
+    é um valor observado da v.a. $S^2$
+
+    \item \textbf{Mínimo da a.a.:} $X(1) = \min\{X_1, X_2,\dots, X_n\}$ 
+    \item \textbf{Máximo da a.a.:} $X(n) = \min\{X_1, X_2,\dots, X_n\}$
+\end{itemize}
+%//==============================--@--==============================//%

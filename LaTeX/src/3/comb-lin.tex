@@ -1,0 +1,169 @@
+%//==============================--@--==============================//%
+\newpage
+\subsection[3.3 Combinações lineares de variáveis aleatórias]{\hspace*{0.075 em}\raisebox{0.2 em}{$\pmb{\drsh}$} Combinações lineares de variáveis aleatórias}
+
+\begin{theo}[\underline{Combinação linear de v.a.}]{def:comb-lin}\label{def:comb-lin}
+    \noindent Sejam $X_1, \dots, X_n$ v.a. e $c_1, \dots, c_n$ constantes reais. Então, a v.a.
+    $$
+        Y = \sum_{i = 1}^{n} c_i X_i
+    $$
+
+    \noindent diz-se uma combinação linear das v.a. $X_1, \dots, X_n$.
+\end{theo}
+
+\noindent A obtenção da f.(d.)p. de uma combinação linear nem sempre é tarefa fácil. Podemos, no entanto, adiantar o valor esperado de qualquer combinação linear de v.a. e obter a variância de combinações lineares de forma expedita em situações particulares.
+
+\begin{theo}[\underline{Valor esperado de combinações lineares de v.a.}]{def:ve-comb-lin}\label{def:ve-comb-lin}
+    \noindent Sejam $X_1, \dots, X_n$ v.a. com valor esperado finito e $c_1, \dots, c_n$ constantes reais. Então
+    $$
+        \begin{aligned}
+            E\left(\sum_{i = 1}^n c_i X_i\right) &= \sum_{i = 1}^n c_i E(X_i)\\[4pt]
+            E\left(\sum_{i = 1}^n X_i\right) &= \sum_{i = 1}^n E(X_i)
+        \end{aligned}
+    $$ % adoro-te muito :heart:
+\end{theo}
+
+\begin{theo}[\underline{Variância de combinações lineares de v.a.}]{def:va-comb-lin}\label{def:va-comb-lin}
+    \noindent Sejam $X_1, \dots, X_n$ v.a. com segundos momentos finitos e $c_1, \dots, c_n$ constantes reais. Então
+    $$
+        \begin{aligned}
+            V(c_1X_1 + c_2X_2)\; &=\; c_1^2V(X_1) + c_2^2V(X_2) + 2 c_1c_2cov(X_1,X_2)\\[4pt]
+            V(X_1 + X_2)\; &=\; V(X_1) + V(X_2) + 2 cov(X_1,X_2)\\[4pt]
+            V(X_1 - X_2)\; &=\; V(X_1) + V(X_2) - 2 cov(X_1,X_2)\\[4pt]
+            V\left(\sum_{i = 1}^{n} c_i X_i\right)\; &=\; \sum_{i = 1}^{n} c_i^2 V(X_i) + 2\sum_{i = 1}^n \sum_{j = i + 1}^n c_i c_j cov(X_i,X_j)
+        \end{aligned}
+    $$
+
+    \noindent Ao lidarmos com v.a. não correlacionadas duas a duas (isto é, v.a. tais que $cov(X_i,X_j) = 0,\;\, \forall i \neq j$) ou com v.a. independentes duas a duas (ou seja $X_i \perp \!\!\! \perp X_j, \forall i \neq j$), temos:
+
+    $$
+        \begin{aligned}
+            V\left(\sum_{i = 1}^{n} c_i X_i\right) &= \sum_{i = 1}^{n} c_i^2 V(X_i)\\
+            V\left(\sum_{i = 1}^{n} X_i\right) &= \sum_{i = 1}^{n} V(X_i)\\
+        \end{aligned}
+    $$
+\end{theo}
+
+%//==============================--@--==============================//%
+\newpage
+\subsubsection[3.3.1 Casos especiais de soma de v.a. independentes]{$\pmb{\rightarrow}$ Casos especiais de soma de v.a. independentes}
+
+{
+\mdfsetup{linewidth=2pt}
+
+\begin{mdframed}
+    \noindent\textbf{Soma de v.a. Bernoulli independentes}
+
+    $$
+        X_i \sim \text{Bernoulli}(p)\;\, \forall i = 1, \dots n
+    $$
+
+    \noindent Sejam $X_i$ e $X_j$ variáveis independentes para $i \neq j$, nomeadamente,
+
+    $$
+        P(X_i = x, X_j = y) = P(X_i = x) P(X_j = y),\;\, \forall x,y
+    $$
+
+    \noindent Então,
+
+    \vspace{-1.5 em}
+    $$
+        \sum_{i = 1}^n X_i \sim \text{binomial}(n,p)
+    $$
+    \noindent \textbf{Nota:} As v.a. dizem-se identicamente distribuídas, já que possuem todas o mesmo parâmetro e distribuição.
+\end{mdframed}
+}
+
+{
+\mdfsetup{linewidth=2pt}
+
+\begin{mdframed}
+    \noindent\textbf{Soma de v.a. Binomiais independentes}
+
+    $$
+        X_i \sim \text{Binomial}(n_i, p)\;\, \forall i = 1, \dots n
+    $$
+
+    \noindent Então,
+
+    \vspace{-1.5 em}
+    $$
+        \sum_{i = 1}^n X_i \sim \text{binomial}\left(\sum_{i = 1}^n n_i,p\right)
+    $$
+
+    \noindent\textbf{Nota:} Graças à propriedade reprodutiva da distribuição binomial, ao lidar-se com v.a. binomiais independentes com probabilidade de sucesso comum.
+\end{mdframed}
+}
+{
+\mdfsetup{linewidth=2pt}
+
+\begin{mdframed}
+    \noindent\textbf{Soma de v.a. Poisson independentes}
+
+    $$
+        X_i \sim \text{Poisson}(\lambda_i)\;\, \forall i = 1, \dots n
+    $$
+
+    \noindent Então,
+
+    \vspace{-1.5 em}
+    $$
+        \sum_{i = 1}^n X_i \sim \text{Poisson}\left(\sum_{i = 1}^n \lambda_i\right)
+    $$
+
+    \noindent\textbf{Nota:} Graças à propriedade reprodutiva da distribuição Poisson, ao lidar-se com v.a. Poisson independentes.
+\end{mdframed}
+}
+
+{
+\mdfsetup{linewidth=2pt}
+
+\begin{mdframed}
+    \noindent\textbf{Combinações lineares de v.a. normais independentes}
+
+    $$
+        X_i \sim \text{normal}(\mu_i, \sigma^2_i)\;\, \forall i = 1, \dots n
+    $$
+
+    \noindent Então,
+
+    \vspace{-1 em}
+    $$
+    \begin{aligned}
+        &a_iX_i + b_i \sim \text{normal}(a_i \mu + b_i, a_i^2\sigma^2_i)\\
+        &\sum_{i = 1}^n (a_i X_i + b_i) \sim \text{normal}\left(\sum_{i = 1}^n(a_i \mu + b_i), \sum_{i = 1}^n(a_i^2\sigma^2_i)\right)
+    \end{aligned}
+    $$
+\end{mdframed}
+} %adoro-te mimo
+
+%//==============================--@--==============================//%
+\newpage
+\subsubsection[3.3.2 Teorema do Limite Central]{$\pmb{\rightarrow}$ Teorema do Limite Central}
+%hello :3 0.0
+\noindent Nem todas as distribuições gozam da propriedade reprodutiva inerente às distribuições previamente abordadas, pelo que é crucial saber como obter os valores aproximados de probabilidades de eventos envolvendo \textit{somas} e \textit{médias aritméticas} de v.a. independentes e identicamente distribuídas (i.i.d). 
+
+\vspace{1 em}
+\noindent Para tal, recorremos ao \textbf{Teorema do Limite Central} (TLC).
+
+\begin{theo}[\underline{Teorema do Limite Central}]{def:tlc}\label{def:tlc}
+    \noindent Considere-se que as v.a. $X_1, \dots, X_n$ são i.i.d com valor esperado $\mu$ e variância finita positiva $\sigma$ para todo o inteiro positivo $n$. Considere-se, ainda, a soma das $n$ primeiras v.a., $S_n = \sum_{i = 1}^{n} X_i$:
+
+    $$
+        \lim_{n \to +\infty} P \left[\dfrac{S_n - E(S_n)}{\sqrt{V(S_n)}} \leq z\right] = \lim_{n \to +\infty} P \left(\dfrac{S_n - \mu}{\sqrt{n}\sigma} \leq z \right) = \Phi(z)
+    $$
+
+    \vspace{0.5 em}
+    \noindent\textbf{Nota:} Este é um resultado assintótico que poderá ser usado para amostras de \textbf{tamanho superior a 30} e é válido para \textbf{somas e médias aritméticas} de v.a. quer discretas, quer contínuas. Possui a seguinte fórmula abreviada:
+    $$
+        \dfrac{\sum_{i = 1}^n X_i - \sum_{i = 1}^n E(X_i)}{\sqrt{\sum_{i = 1}^n V(X_i)}} \sim \text{normal}(0,1)
+    $$
+    \noindent e pode também ser escrito à custa de médias, já que
+    $$
+        \dfrac{n}{n} \cdot \dfrac{\sum_{i = 1}^n X_i - \sum_{i = 1}^n E(X_i)}{\sqrt{\sum_{i = 1}^n V(X_i)}} = \dfrac{\overline{X} - \mu}{\sqrt{\sigma^2/n}} \overset{a}{\sim} \text{normal}(0,1)
+    $$
+    \noindent (onde $\overset{a}{\sim}$ deve ler-se \textit{tem distribuição aproximadamente})
+\end{theo}
+
+
+%//==============================--@--==============================//%

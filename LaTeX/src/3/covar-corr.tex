@@ -1,0 +1,89 @@
+%//==============================--@--==============================//%
+\subsection[3.3 Convariância e Correlação]{\hspace*{0.075 em}\raisebox{0.2 em}{$\pmb{\drsh}$} Convariância e Correlação}
+
+\noindent É crucial obter medidas que avaliama associação (linear) entre duas v.a.:
+\begin{itemize}
+    \item de forma absoluta, calculado a covariância entre $X$ e $Y$
+    \item de forma relativa, determinando a correlação entre $X$ e $Y$
+\end{itemize}
+
+\begin{theo}[\underline{Convariância}]{def:cov}\label{def:cov}
+    \noindent Sejam $X$ e $Y$ duas v.a. para asquais existem momentos de 2ª ordem $E(X^2)$ e $E(Y^2)$. Então, a covariância entre $X$ e $Y$ representa-se usualmente por $cov(X,Y)$ e é definida por
+    \begin{align*}
+        cov(X,Y) &= E\{[X - E(X)] \times [Y - E(Y)]\}\\
+        &= E[XY - XE(Y) - YE(X) + E(X)E(Y)]\\
+        &= E(XY) - 2\cdot E(X)E(Y) + E(X)E(Y)\\
+        &= E(XY) - E(X)E(Y)
+    \end{align*}
+\end{theo}
+
+\noindent Se $X$ e $Y$ forem v.a. independentes então a covariância entre $X$ e $Y$ é nula, mas o inverso não é necessariamente verdadeiro. Mais, se $cov(X,Y) \ne 0$, podemos concluir imediatamente que $X$ e $Y$ são v.a. dependentes.
+
+\begin{theo}[\underline{Propriedades da Convariância}]{def:prop-cov}\label{def:prop-cov}
+    \noindent Sejam $X,Y,Z, X_1, \dots, X_n$ e $Y_1, \dots, Y_n$ v.a. com segundos momentos finitos. Então:
+    \begin{enumerate}
+        \item $X\perp \!\!\! \perp Y \implies cov(X,Y) = 0$ 
+        \item $cov(X,Y) = 0 \mathrel{\rlap{\hskip .5em/}}\Longrightarrow X\perp \!\!\! \perp Y$
+        \item $cov(X,Y) \ne 0 \implies X \not\perp \!\!\! \perp Y$
+        \item $cov(X,Y) = cov(Y,X)$
+        \item $cov(X,X) = V(X)$
+        \item $cov(aX + b, Y) = acov(X,Y)$
+        \item $cov(X + Z,Y) = cov(X,Y) + cov(Z,Y)$
+        \item $cov(\sum_{i = 1}^{n}X_i, \sum_{j = 1}^{n}Y_i) = \sum_{i = 1}^{n}\sum_{j = 1}^{n} cov(X,Y)$
+    \end{enumerate}
+\end{theo}
+
+\noindent A covariância é uma medida absoluta de associação, como tal possui algumas desvantagens:
+\begin{itemize}
+    \item Não é adimensional
+    \item O seu valor pode ser alterado de modo arbitrário, ao efetuar-se, por exemplo uma mudança de escala (vide propriedade 6 na \hyperref[def:prop-cov]{tabela de propriedades da covariância}).
+\end{itemize}
+\noindent Há pois necessidade de quantificar, em termos relativos, a associação entre $X$ e $Y$ à custa de uma medida adimensional e passível de interpretação:
+
+\newpage
+\begin{theo}[\underline{Correleação}]{def:corr}\label{def:corr}
+    \noindent Sejam $X$ e $Y$ duas v.a. para asquais existem momentos de 2ª ordem $E(X^2)$ e $E(Y^2)$. Então, a correlação entre $X$ e $Y$ representa-se usualmente por $corr(X,Y)$ e é definida por
+    $$
+        corr(X,Y) = \dfrac{cov(X,Y)}{\sqrt{V(X)\cdot V(Y)}}
+    $$
+
+    \noindent Caso $corr(X,Y) \ne 0$ (repetivamente $corr(X,Y) = 0$) as variáveis aleatórias dizem-se correlacionadas (respetivamente não correlacionadas).
+\end{theo}
+
+\begin{theo}[\underline{Propriedades da Convariância}]{def:prop-cov}\label{def:prop-cov}
+    \noindent Sejam $X$ e $Y$ v.a. com segundos momentos finitos. Então:
+    \begin{enumerate}
+        \item $X\perp \!\!\! \perp Y \implies corr(X,Y) = 0$ 
+        \item $corr(X,Y) = 0 \mathrel{\rlap{\hskip .5em/}}\Longrightarrow X\perp \!\!\! \perp Y$
+        \item $corr(X,Y) \ne 0 \implies X \not\perp \!\!\! \perp Y$
+        \item $corr(X,Y) = corr(Y,X)$
+    \end{enumerate}
+
+    \noindent Importa ainda adiantar:
+    \begin{enumerate}
+        \item $corr(X,X) = 1$
+        \item $corr(aX + b,Y) = \left\{
+                                \begin{array}{ll}
+                                      -corr(X,Y), & a < 0\\
+                                       corr(X,Y) & a > 0\\
+                                \end{array} 
+                          \right.$
+        \item $-1 \leq corr(X,Y) \leq 1$ para qualquer par de v.a.
+        \item $|corr(X,Y)| = 1 \xrightarrow{} Y = aX + b$ (quase em toda a parte com $corr(X,Y) = -1$ se $a < 0$ e $corr(X,Y) = 1$ se $a > 0$)
+    \end{enumerate}
+\end{theo}
+
+\noindent \textbf{Intrepertação do sinal da correlação} --- As propriedades 7 e 8 sugerem:
+\begin{itemize}
+    \item A correlação quantifica a associação linear entre $X$ e $Y$
+\end{itemize}
+\noindent Assim, se o valor absoluto de $corr(X,Y)$ estiver próximo de 1, podemos afirmar que a associação entre $X$ e $Y$ é praticamente linear.
+
+\vspace{1 em}
+\noindent Por seu lado o sinal da correlação deve ser interpretado do seguinte modo:
+\begin{itemize}
+    \item Caso $corr(X,Y) > 0$ (resp. $corr(X,Y) < 0$) pode afirmar-se que as v.a. de $X$ e $Y$ tenderão a variar no mesmo sentido (resp. em sentidos opostos) relativamente aos respetivos valores esperados.
+\end{itemize}
+
+\noindent \textbf{Nota:} São de evitar, no entanto, interpretações abusivas desta medida de associação relativa, pois a existência de correlação entre duas v.a. não implica necessariamente uma relação direta de causa e efeito (por exemplo, o número de carros que passam numa estrada e o número de gatos que roubam peixes do mercado por mês)
+%//==============================--@--==============================//% 

@@ -1,0 +1,293 @@
+\author{João Gonçalves}
+\newcommand{\authorr}{Teresa Nogueira}
+\newcommand{\studentID}{99995}
+\newcommand{\studentIDD}{100029}
+%\newcommand{\supervisorone}{Prof\textsuperscript{\underline{a}}. XXXXXX}
+\newcommand{\supervisorone}{}
+\newcommand{\supervisortwo}{}
+\newcommand{\department}{Engenharia Eletrotécnica e de Computadores}
+\newcommand{\exam}{Probabilidade e Estatística}
+
+\title{%
+Apontamentos sobre PE\\
+\large (Alguns tópicos \href{https://github.com/Kons-5}{\raisebox{0 em}{\large \faGithub}})}
+\date{Fevereiro 2023}
+
+\documentclass[a4paper,12pt]{article}
+\usepackage[left=25mm,top=21mm,right=25mm,bottom=21mm]{geometry}
+\usepackage[flushmargin,hang,bottom,multiple]{footmisc}
+\usepackage[usestackEOL]{stackengine}
+\usepackage{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome5,textcomp}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+
+\usepackage[export]{adjustbox}
+\usepackage{graphicx,array}
+\usepackage{float,wrapfig}
+\usepackage[font=footnotesize,labelfont=bf]{caption}
+\usepackage[justification=centering]{subcaption}
+\usepackage{tcolorbox,varwidth}
+\newtcbox{\tightbox}{colback=white,arc=0pt,boxsep=6pt,left=0pt,right=0pt,top=0pt,bottom=0pt,
+                    boxrule=2pt,varwidth upper}
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{mathtools}
+\usepackage{mathabx}
+\usepackage{physics}
+\usepackage{cancel}
+\usepackage{tabularx}
+\usepackage{centernot}
+
+\usepackage{pgfplots}
+\usepackage{booktabs}
+\usepackage{etoolbox}
+
+\usepackage{listings}
+\usepackage{enumitem}
+
+\usepackage[linktoc=all]{hyperref}
+\usepackage[capitalise]{cleveref}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage[square,numbers,sort]{natbib}
+\usepackage{breakurl}
+\usepackage{placeins}
+\usepackage{colortbl}
+\usepackage{attrib}
+
+\usepackage{environ}
+\makeatletter
+\newsavebox{\measure@tikzpicture}
+\NewEnviron{scaletikzpicturetowidth}[1]{%
+  \def\tikz@width{#1}%
+  \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
+  \BODY
+  \end{lrbox}%
+  \pgfmathparse{#1/\wd\measure@tikzpicture}%
+  \edef\tikzscale{\pgfmathresult}%
+  \BODY
+}
+\makeatother
+
+% \usepackage[printwatermark]{xwatermark}
+\usepackage[framemethod=TikZ]{mdframed}
+%\tcbuselibrary{skins,breakable}
+%\usetikzlibrary{shadings,shadows}
+\linespread{1}
+%\setlength{\parindent}{0pt}
+
+\hypersetup{
+    colorlinks,
+    linkcolor={black},
+    citecolor={blue!50!black},
+    urlcolor={blue!50!black}
+}
+
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\belowdisplayskip}{3pt}
+\setlength{\fboxsep}{1.25\fboxsep}
+
+\let\zzzfootnotesize\footnotesize
+\def\newfootnotesize{%
+\zzzfootnotesize
+\abovedisplayskip=0pt
+\belowdisplayskip=\abovedisplayskip
+\abovedisplayshortskip=\abovedisplayskip
+\belowdisplayshortskip=\abovedisplayskip
+}
+\renewcommand\footnotesize{\protect\newfootnotesize}
+
+\mdfsetup{%
+    linewidth=2pt
+}
+%//==============================--@--==============================//%
+%                         -> error messages <-                        %
+\usepackage{pifont}
+
+\newenvironment{warning}
+  {\par\begin{mdframed}[linewidth=1.5pt,linecolor=red]%
+    \begin{list}{}{\leftmargin=0.9cm
+                   \labelwidth=\leftmargin}\item[\raisebox{-0.4 em}{\Large\ding{43}}]}
+  {\end{list}\end{mdframed}\par}
+
+%//==============================--@--==============================//%
+%                   -> reduzir espaço entre itens <-                  %
+\usepackage{enumitem}
+%\setlist[itemize]{nosep}
+%\setlist[enumerate]{nosep}
+\setlist[itemize]{itemsep=0.0125em}
+\setlist[enumerate]{itemsep=0.0125em}
+%//==============================METH-==============================//%
+\newcounter{theo}[section]\setcounter{theo}{0}
+\renewcommand{\thetheo}{\arabic{theo}}
+
+%\definecolor{tempcolor}{RGB}{113, 110, 97}
+\definecolor{tempcolor}{RGB}{0, 0, 0}
+\newenvironment{theo}[2][]{%
+    \refstepcounter{theo}
+    \ifstrempty{#1}%
+    % if condition (without title)
+    {\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=blue!20]
+            {\strut Teorema~\thetheo};}
+        }%
+    % else condition (with title)
+    }{\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=white]
+            {\strut #1};}%
+        }%
+    }%
+    % Both conditions
+    \mdfsetup{%
+        innertopmargin=0pt,linecolor=tempcolor,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=1.25\dimexpr-\ht\strutbox\relax%
+    }
+ 
+\begin{mdframed}[]\relax\vspace{-0.5em}}{%
+\end{mdframed}}
+
+\def\delequal{\mathrel{\ensurestackMath{\stackon[1pt]{=}{\scriptstyle\Delta}}}}
+
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+%------------------------------------ MAGIC--------------------------------------
+\def\UrlBreaks{\do\/\do-}
+\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks\do\a%
+\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n%
+\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\&}
+
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%----------------------------------TITLE PAGE -----------------------------------
+\makeatletter
+\def\maketitle{
+  \begin{center}\leavevmode
+        \normalfont
+        \includegraphics[width=0.5\columnwidth]{img/title-page/IST.pdf}
+        \vskip 0.05cm   
+        \textsc{\large \department}\\
+        \vskip 0.5cm
+        \rule{0.95\linewidth}{0.2 mm} %\\
+        {\large \exam}\\[0.5 cm]
+        {\huge \bfseries \@title \par} 
+        \vspace{1em}
+        \begin{figure}[!h]  
+            \centering
+            \includegraphics[width=0.6\linewidth]{img/title-page/dist-paranormal.png}
+            \caption*{\color{gray} \textit{Imagem: Distribuição Paranormal}} 
+            \label{fig:curvas} 
+        \end{figure}
+        %\vspace{0.5cm}
+        \rule{0.95\linewidth}{0.2 mm} \\[0.75 cm]
+        %\fontsize{9pt}{11pt}\selectfont
+        \begin{minipage}[t]{1\textwidth}
+	   \begin{flushleft} \large
+                \emph{Autores:}\\
+			\normalsize \textbf{\@author} : \studentID\\
+                \fontsize{9pt}{11pt}\selectfont $\hookrightarrow$ jrazevedogoncalves@tecnico.ulisboa.pt \\
+                \normalsize \textbf{\authorr} : \studentIDD\\
+                \scriptsize $\hookrightarrow$ maria.teresa.ramos.nogueira@tecnico.ulisboa.pt
+		\end{flushleft}
+	\end{minipage}
+	\vfill
+	{\Large \@date\par}
+   \end{center}
+   %\vfill
+   %\null
+   \cleardoublepage
+  }
+\makeatother
+%-------------------------------- ENDTITLE PAGE ----------------------------------
+%---> Header <---
+%\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}% Header rule width
+\renewcommand{\footrulewidth}{0pt}% No footer rule
+\setlength\headheight{26pt} 
+\fancyhead[L]{\raisebox{0.1\height}[0pt][0pt]{\textit{Probabilidade e Estatística}}}
+\fancyhead[R]{\raisebox{0.1\height}[0pt][0pt]{2022/2023}}
+%%%%%%%%%%%%%%%%%
+
+\pgfplotsset{compat=1.18}
+\setcounter{tocdepth}{4}
+%\setcounter{secnumdepth}{4}
+\setcounter{secnumdepth}{-2}
+
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\tablename}{Tab.}
+\renewcommand{\contentsname}{Índice}
+\settocbibname{\raisebox{0em}{Referências}}
+\setlength{\bibsep}{0.1em}%reduzir espaço entre refs.
+
+%\renewcommand{\bibpreamble}{\vspace{-8em}}
+\usepackage[titles]{tocloft}
+\setlength{\cftbeforesecskip}{0.25em}
+
+\begin{document}%
+    \sloppy
+    %% title page
+    \pagenumbering{gobble}
+    \maketitle
+    %% toc
+    \tableofcontents
+    %% body
+    \newpage
+    \pagestyle{fancy}
+    \pagenumbering{arabic}
+    
+    \clearpage
+    \section{1. Noções Básicas de Probabilidade}%
+        \input{src/1/concepts}
+        \input{src/1/conditional-probability}
+        \input{src/1/combinatorics}
+
+    \clearpage
+    \section{2. Variáveis Aleatórias e Distribuições}
+        \input{src/2/va}
+
+    \clearpage
+    \section{3. Pares Aleatórios e Complementos}
+        \input{src/3/pares-aleatorios-def}
+        \input{src/3/pares-ale-discretos}
+        \input{src/3/pares-ale-continuos}
+        \input{src/3/covar-corr}
+        \input{src/3/comb-lin}
+
+    \clearpage
+    \section{4. Amostragem e Estimação Pontual}
+        \input{src/4/conceitos-base}
+        \input{src/4/MMV}
+
+    \clearpage
+    \section{5. Estimação por Intervalos}
+        \input{src/5/IC-intro}
+        \input{src/5/IC-esqueleto}
+
+    \clearpage
+    \section{6. Testes de Hipóteses}
+        \input{src/6/testes-hipo}
+
+    \clearpage\addtocontents{toc}{\protect\newpage}
+    \section{7. Introdução à Regressão Linear}
+        \input{src/7/lin-regression}
+
+    %% refs
+    \clearpage
+    \bibliographystyle{unsrtnat}
+    \nocite{*}
+    {\footnotesize%
+    \bibliography{refs}}
+    %% attachments
+    %\newpage
+    %\input{appendix}
+
+\end{document}%

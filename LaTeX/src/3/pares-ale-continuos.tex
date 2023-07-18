@@ -1,0 +1,104 @@
+%//==============================--@--==============================//%
+\clearpage
+\subsection[3.2 Pares Aleatórios contínuos]{\hspace*{0.075 em}\raisebox{0.2 em}{$\pmb{\drsh}$} Pares Aleatórios contínuos}
+
+\noindent\textbf{Tipo 2:} Par Aleatório contínuo --- Tal como no caso unidimensional, a definição de para aleatório contínuo é sustentada na definição de f.d.p. conjunta.
+
+
+\begin{theo}[\underline{Par aleatório contínuo e função de densidade de probabilidade conjunta}]{def:par-ale-cont}\label{def:par-ale-cont}
+    \noindent O par aleatório $(X,Y)$ diz-se contínuo se tomar valores num conjunto infinito não numerável $\mathbb{R}_{X,Y} \subset \mathbb{R}^2$, e existir uma função denominada de f.d.p. conjunta, $f_{X,Y}(x,y)$, satisfazendo:
+
+    \begin{itemize}
+        \item $f_{X,Y}(x,y) \ge 0\,\; \forall (x,y) \in \mathbb{R}^2$
+        \item $F_{X,Y}(x,y) = \int_{-\infty}^{x} \int_{-\infty}^{y} f_{X,Y}(u,v)dvdu\,\; (x,y) \in \mathbb{R}^2$
+    \end{itemize}
+\end{theo}
+
+\noindent \textbf{Propriedades da função de densidade probabilidade conjunta} --- A f.d.p. conjunta $f_{X,Y}(x,y)$ satisfaz:
+\begin{itemize}
+    \item $\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} f_{X,Y}(u,v)dvdu = 1$
+    \item $f_{X,Y}(x,y) = \frac{\partial^2 F_{X,Y}(x,y)}{\partial xy}$, caso $f_{X,Y}$ seja contínua no ponto $(x,y)$
+    \item $P[(X,Y) \in A] = \int \int_{A} f_{X,Y}(u,v)dvdu$, para qualquer evento $A$ de $\mathbb{R}^2$
+\end{itemize}
+
+\begin{theo}[\underline{Função de distribuição conjunta}]{def:f.d.c.c}\label{def:f.d.c.c}
+    \noindent A f.d. conjunta do par aleatório contínuo $(X,Y)$ define-se à custa da respetiva f.d.p. conjunta:
+
+    \vspace{-1 em}
+    \begin{align*}
+        F_{X,Y} &= P(X \leq x, Y \leq y)\\
+        &= \int_{-\infty}^{x} \int_{-\infty}^{y} f_{X,Y}(u,v)dvdu\,\; (x,y) \in \mathbb{R}^2
+    \end{align*}
+
+    \noindent Onde $F_{X,Y}(x,y)$ corresponde , obviamente, ao volume sob a superfície da f.d.p. conjunta $(X,Y)$ na região $]-\infty, x] \times ]-\infty, y]$
+\end{theo}
+
+\noindent A função de distribuição conjunta é tipicamente representada mediante uma função por ramos.
+
+\begin{theo}[\underline{Função de densidade de probabilidade marginais de $X$ e $Y$}]{def:f.d.p.m}\label{def:f.d.p.m}
+    \noindent As f.d.p. marginais  de $X$ e $Y$ definem-se à custa da respetiva f.d.p. conjunta:
+    \begin{align*}
+        f_X(x) &= \int_{-\infty}^{+\infty} f_{X,Y} (x,y)dy\\
+        f_Y(y) &= \int_{-\infty}^{+\infty} f_{X,Y} (x,y)dx
+    \end{align*}
+\end{theo}
+
+\noindent\textbf{Funções de distribuição marginais de $X$ e $Y$} --- de forma análoga ao caso discreto, as f.d. marginais de $X$ e de $Y$ calculam-se à custa das respetivas f.d.p. marginais, ou, então por recurso à f.d.p. conjunta ou à f.d. conjunta do par aleatório contínuo $(X,Y)$.
+
+\begin{theo}[\underline{Função de distribuição marginais de $X$ e $Y$}]{def:f.d.m}\label{def:f.d.m}
+    \begin{align*}
+        F_X(x) &= P(X \leq x) = \int_{-\infty}^{x} f_X(x)dx = \int_{-\infty}^{x} \left[\int_{-\infty}^{+\infty} f_{X,Y}(x,y)dy\right]dx\\
+        &= F_{X,Y}(x, +\infty),\;\, x \in \mathbb{R}\\
+        F_Y(y) &= P(Y \leq y) = \int_{-\infty}^{y} f_Y(y)dx = \int_{-\infty}^{y} \left[\int_{-\infty}^{+\infty} f_{X,Y}(x,y)dx\right]dy\\
+        &= F_{X,Y}(+\infty,y),\;\, y \in \mathbb{R}
+    \end{align*}
+\end{theo}
+
+\noindent\textbf{Funções de densidade de probabilidade condicional} ---  Ao lidarmos com um par aleatório contínuo $(X,Y)$ é absurdo definir a probabilidade condicionada $P(X = x | Y = y)$, já que $P(X = x) = P(Y = y) = 0$, no entanto, faz sentido definir:
+
+\begin{theo}[\underline{F.d.p, F.d, valores esperados e variância condicionais}]{def:cont-condi}\label{def:cont-condi}
+
+    \noindent Admitindo $f_Y(y) > 0$ 
+    \begin{itemize}
+        \item F.d.p. de $X | Y = y$
+        $$
+            f_{X | Y = y}(x) = \dfrac{f_{X,Y}(x,y)}{f_Y(y)},\;\, x \in \mathbb{R}
+        $$
+        \item F.d. de $X | Y = y$
+        $$
+            F_{X | Y = y} = \int_{-\infty}^x f_{X | Y = y}(x) dx,\;\, x \in \mathbb{R}
+        $$
+    \end{itemize}
+
+    \vspace{-0.5 em}
+    \noindent Assumindo que $E(X)$ existe:
+    \begin{itemize}
+        \item Valor esperado de $X | Y = y$
+        $$
+            E(X | Y = y) = \int_{-\infty}^{+\infty} x f_{X | Y = y}(x)dx
+        $$
+    \end{itemize}
+
+    \vspace{-0.5 em}
+    \noindent Admitindo também que $E(X^2)$ existe:
+    \begin{itemize}
+        \item Variância de $X | Y = y$
+        \begin{align*}
+            V(X | Y = y) &= E(X^2 | Y = y) - E(X | Y = y)^2\\
+            &= \int_{-\infty}^{+\infty} x^2 f_{X | Y = y}(x) dx - \left[\int_{-\infty}^{+\infty} x f_{X | Y = y}(x) dx\right]^2
+        \end{align*}
+    \end{itemize}
+\end{theo}
+
+\vspace{-0.5 em}
+\begin{theo}[\underline{Independência}]{def:indep-cont}\label{def:indep-cont}
+    As v.a. contínuas $X$ e $Y$ dizem-se independentes sse
+    $$
+        f_{X,Y}(x,y) = f_X(x) \times f_Y(y),\;\, \forall (x,y) \in \mathbb{R}^2
+    $$
+    \noindent Ou seja, se formos capazes de escrever a f.d.p. conjunta do par aleatório contínuo $(X,Y)$ à custa do produto das f.d.p. marginais de $X$ e $Y$.Caso  $X\perp \!\!\! \perp Y$ e $F_{X,Y}(x,y)$ esteja definida verificamos as mesmas propriedades que no caso discreto, com exceção: 
+    $$
+        F_{X|Y=y}(x,y) = f_X(x)
+    $$ 
+\end{theo}
+%//==============================--@--==============================//%

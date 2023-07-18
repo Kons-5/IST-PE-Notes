@@ -1,0 +1,189 @@
+%//==============================--@--==============================//%
+\subsection[5.1 IC para o valor esperado e variância conhecida]{\hspace*{0.075 em}\raisebox{0.2 em}{$\pmb{\drsh}$} IC para o valor esperado e variância conhecida}
+
+\noindent Supondo inicialmente que a v.a. de interesse possui \textbf{distribuição normal}, temos:
+
+\begin{mdframed}
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Situação}
+        $$
+            X \sim \text{normal}(\mu, \sigma^2) \;\rightarrow\; \left\{
+            \begin{aligned}
+                &\pmb{\mu} \mkern9.5mu\texttt{-}\mkern9.5mu \texttt{\color{red} DESCONHECIDO} \\
+                &\sigma^2 \mkern3mu\texttt{-}\mkern9mu \texttt{\color{green} CONHECIDO}
+            \end{aligned}\right.
+        $$
+        
+        \item \textbf{Passo 1 --- Seleção da v.a. fulcral para $\mu$}
+        $$
+            Z = \dfrac{\overline{X} - \mu}{\sigma/\sqrt{n}} \sim \text{normal}(0,1)
+        $$
+    
+        \item \textbf{Passo 2 --- Obtenção dos quantis de probabilidade}
+        $$
+            (a_\alpha, b_\alpha)\, :\, \left\{\begin{array}{ll}
+                 a_\alpha = \Phi(\alpha/2) = -\Phi(1 - \alpha/2)\\
+                 b_\alpha = \Phi(1 - \alpha/2)
+            \end{array}\right.
+        $$
+    
+        \item \textbf{Passo 3 --- Inversão de igualdades}
+        $$
+            \begin{aligned}
+                &P(a_\alpha \leq Z \leq b_\alpha) = 1 - \alpha\\
+                &P\left[a_\alpha \leq \dfrac{\overline{X} - \mu}{\sigma/\sqrt{n}} \leq b_\alpha\right] = 1 - \alpha\\
+                &P\left[\overline{X} - b_\alpha\cdot \dfrac{\sigma}{\sqrt{n}} \leq \mu \leq \overline{X} + a_\alpha\cdot \dfrac{\sigma}{\sqrt{n}}\right] = 1 - \alpha\\
+            \end{aligned}
+        $$
+    
+        \item\textbf{Passo 4 --- Concretização}
+        $$
+            IC_{(1 - \alpha)\cdot 100\%} = \left[\overline{x} \pm \Phi(1 - \alpha/2) \cdot \dfrac{\sigma}{\sqrt{n}}\right]
+        $$
+    \end{itemize}
+\end{mdframed}
+
+\newpage
+\noindent Caso a população possua \textbf{distribuição arbitrária} (e uma amostra suficientemente grande, respetivamente $\ge 30$) o procedimento é idêntico ao enunciado acima, com exceção da v.a. fulcral e respetivo IC, que passam agora a ser denominados por \textit{aproximados} (consequência direta da utilização do  \hyperref[def:tlc]{TLC}).
+
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item \textbf{Passo 1 --- Seleção da v.a. fulcral para $\mu$}
+    $$
+        Z = \dfrac{\overline{X} - \mu}{\sigma/\sqrt{n}} \overset{a}{\sim} \text{normal}(0,1)
+    $$
+    \item\textbf{Passo 4 --- Concretização}
+    $$
+        IC_{(1 - \alpha)\cdot 100\%} \simeq \left[\overline{x} \pm \Phi(1 - \alpha/2) \cdot \dfrac{\sigma}{\sqrt{n}}\right]
+    $$
+\end{itemize}
+
+\subsection[5.2 IC para o valor esperado e variância desconhecida]{\hspace*{0.075 em}\raisebox{0.2 em}{$\pmb{\drsh}$} IC para o valor esperado e variância desconhecida}
+
+\noindent Supondo inicialmente que a v.a. de interesse possui \textbf{distribuição normal}, temos:
+
+\begin{mdframed}
+    \begin{itemize}[leftmargin=*,noitemsep]
+        \item \textbf{Situação}
+        $$
+            X \sim \text{normal}(\mu, \sigma^2) \;\rightarrow\; \left\{
+            \begin{aligned}
+                &\pmb{\mu} \mkern9.5mu\texttt{-}\mkern9.5mu \texttt{\color{red} DESCONHECIDO} \\
+                &\sigma^2 \mkern3mu\texttt{-}\mkern9mu \texttt{\color{red} DESCONHECIDA}
+            \end{aligned}\right.
+        $$
+        
+        \item \textbf{Passo 1 --- Seleção da v.a. fulcral para $\mu$}
+        $$
+            Z = \dfrac{\overline{X} - \mu}{S/\sqrt{n}} \sim t_{n - 1}\qquad
+            S^2 = \dfrac{1}{n - 1} \sum_{i = 1}^{n}(X_i - \overline{X})^2
+        $$
+    
+        \item \textbf{Passo 2 --- Obtenção dos quantis de probabilidade}
+         $$
+            (a_\alpha, b_\alpha)\, :\, \left\{\begin{array}{ll}
+                 a_\alpha = F_t(\alpha/2) = -F_t(1 - \alpha/2)\\
+                 b_\alpha = F_t(1 - \alpha/2)
+            \end{array}\right.
+        $$
+    
+        \item \textbf{Passo 3 --- Inversão de igualdades}
+        $$
+            \begin{aligned}
+                &P(a_\alpha \leq Z \leq b_\alpha) = 1 - \alpha\\
+                &P\left[a_\alpha \leq \dfrac{\overline{X} - \mu}{\sigma/\sqrt{n}} \leq b_\alpha\right] = 1 - \alpha\\
+                &P\left[\overline{X} - b_\alpha\cdot \dfrac{S}{\sqrt{n}} \leq \mu \leq \overline{X} + a_\alpha\cdot \dfrac{S}{\sqrt{n}}\right] = 1 - \alpha\\
+            \end{aligned}
+        $$
+    
+        \item\textbf{Passo 4 --- Concretização}
+        $$
+            IC_{(1 - \alpha)\cdot 100\%} = \left[\overline{x} \pm F_t(1 - \alpha/2) \cdot \dfrac{s}{\sqrt{n}}\right]
+        $$
+    \end{itemize}
+\end{mdframed}
+
+\noindent Caso a população possua \textbf{distribuição arbitrária} (e uma amostra suficientemente grande, respetivamente $\ge 30$) o procedimento é idêntico ao enunciado acima, com exceção da v.a. fulcral, que passa agora a ter distribuição aproximadamente normal, ao invés de \textit{t-student} (consequência direta da utilização do  \hyperref[def:tlc]{TLC}). \hfill $\implies Z = \frac{\overline{X} - \mu}{S/\sqrt{n}} \overset{a}{\sim} \text{normal}(0,1)$
+
+\subsection[5.3 IC para a variância e valor esperado desconhecido]{\hspace*{0.075 em}\raisebox{0.2 em}{$\pmb{\drsh}$} IC para a variância e valor esperado desconhecido}
+
+\noindent Supondo inicialmente que a v.a. de interesse possui \textbf{distribuição normal}, (caso a distribuição da v.a. de interessa não seja dada, admitimos sempre distribuição normal) temos:
+
+\begin{mdframed}
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Situação}
+        $$
+            X \sim \text{normal}(\mu, \sigma^2) \;\rightarrow\; \left\{
+            \begin{aligned}
+                &\mu \mkern9.5mu\texttt{-}\mkern9.5mu \texttt{\color{red} DESCONHECIDO}\\
+                &\pmb{\sigma^2} \mkern3mu\texttt{-}\mkern9mu \texttt{\color{red} DESCONHECIDA}
+            \end{aligned}\right.
+        $$
+    
+        \item \textbf{Passo 1 --- Seleção da v.a. fulcral para $\mu$}
+        $$
+            Z = \dfrac{S^2 (n - 1)}{\sigma} \sim \chi^2_{n - 1}\qquad
+            S^2 = \dfrac{1}{n - 1} \sum_{i = 1}^{n}(X_i - \overline{X})^2
+        $$
+    
+        \item \textbf{Passo 2 --- Obtenção dos quantis de probabilidade}
+         $$
+            (a_\alpha, b_\alpha)\, :\, \left\{\begin{array}{ll}
+                 a_\alpha = F_{\chi^2}(\alpha/2) \\
+                 b_\alpha = F_{\chi^2}(1 - \alpha/2)
+            \end{array}\right.
+        $$
+        \noindent Já que a distribuição \textit{qui-quadrado} possui assimetria positiva.
+    
+        \vspace{1 em}
+        \item \textbf{Passo 3 --- Inversão de igualdades}
+    
+        $$
+            \begin{aligned}
+                &P(a_\alpha \leq Z \leq b_\alpha) = 1 - \alpha\\
+                &P\left[a_\alpha \leq \dfrac{S^2 (n - 1)}{\sigma} \leq b_\alpha\right] = 1 - \alpha\\
+                &P\left[\dfrac{(n-1)S^2}{b_\alpha} \leq \sigma^2 \leq \dfrac{(n-1)S^2}{b_\alpha}\right] = 1 - \alpha\\
+            \end{aligned}
+        $$
+    
+        \item\textbf{Passo 4 --- Concretização}
+    
+        $$
+            IC_{(1 - \alpha)\cdot 100\%} = \left[\dfrac{(n-1)S^2}{F_{\chi^2}(1 - \alpha/2)}\,;\, \dfrac{(n-1)S^2}{F_{\chi^2}(\alpha/2)}\right]
+        $$
+    \end{itemize}
+\end{mdframed}
+
+\newpage
+\subsection[5.4 IC's para uma probabilidade de sucesso e outros parâmetros de população não normais uniparamétricas]{\hspace*{0.075 em}\raisebox{0.2 em}{$\pmb{\drsh}$} IC's para uma probabilidade de sucesso e outros parâmetros de população não normais uniparamétricas}
+
+\noindent Importa adiantar IC aproximados para a probabilidade de sucesso de uma prova de Bernoulli, bem como outros parâmetros de populações não normais uniparamétricas. Os passos de cálculo para o intervalo de tempo em nada se alteram relativamente aos realizados nas secções anteriores. Neste sentido, é relevante evidenciar apenas as variáveis fulcrais interatuantes no cálculo do IC:
+
+\subsubsection[5.4.1 Probabilidade de sucesso num ensaio de Bernoulli]{$\pmb{\rightarrow}$ Probabilidade de sucesso num ensaio de Bernoulli}
+
+$$
+    \boxed{Z = \dfrac{\overline{X} - p}{\sqrt{\overline{X}(1-\overline{X})/n}} \overset{a}{\sim} \text{normal}(0,1)}
+$$
+
+\noindent Desde que o tamanho da amostra justifique o uso do teorema do limite central. Note-se ainda que $E(\overline{X}) = E(X) = p$, $V(\overline{X}) = V(X)/n = p(1 - p)/n \simeq \overline{X}(1-\overline{X})/n$ de acordo com a distribuição binomial.
+
+\subsubsection[5.4.2 Valor médio de uma população Poisson]{$\pmb{\rightarrow}$ Valor médio de uma população Poisson}
+
+$$
+    \boxed{Z = \dfrac{\overline{X} - \lambda}{\sqrt{\overline{X}/n}} \overset{a}{\sim} \text{normal}(0,1)}
+$$
+
+\noindent Novamente, Desde que o tamanho da amostra justifique o uso do teorema do limite central, onde $V(\overline{X}) = \lambda/n \simeq \overline{X}/n$.
+
+\subsubsection[5.4.3 Rate de uma população exponencial]{$\pmb{\rightarrow}$ Rate de uma população de exponencial}
+
+\noindent Recorrendo ao Teorema do Limite Central:
+$$
+    \boxed{%
+    \begin{aligned}
+        Z &= \dfrac{\overline{X} - \lambda^{-1}}{\lambda^{-1}/\sqrt{n}}\\[4pt]
+        &= \Aboxed{(\lambda \overline{X} - 1)\cdot \sqrt{n} \overset{a}{\sim} \text{normal}(0,1)}
+    \end{aligned}
+    }
+$$
+
+%//==============================--@--==============================//%

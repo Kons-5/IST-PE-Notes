@@ -1,0 +1,176 @@
+%//==============================--@--==============================//%
+\clearpage
+\subsection[3.1 Pares Aleatórios discreto]{\hspace*{0.075 em}\raisebox{0.2 em}{$\pmb{\drsh}$} Pares Aleatórios discreto}
+
+\noindent\textbf{Tipo 1:} Par Aleatório discreto --- toma valores em conjuntos finitos ou infinitos numeráveis de $\mathbb{R}^2$
+
+\begin{mdframed}
+$(X,Y)$ diz se um par aleatório discreto caso tome valores exclusivamente num conjunto finito ou infinito numerável $\mathbb{R}_{X,Y} = \{(x_i,y_i)\}_{i=1,2,\dots\,j=1,2,\dots}$:
+$$
+    P[(X,Y) \in \mathbb{R_{X,Y}})] = 1
+$$
+\end{mdframed}
+
+\noindent\textbf{Função de probabilidade conjunta} --- Seja $(X,Y)$ um par aleatório discreto com contradomínio $\mathbb{R}_{X,Y}$. Então, a f.p. conjunta de $(X,Y)$ é definida por:
+$$
+\begin{aligned}
+    P(X = x, Y = y) &= P(\{\omega \in \Omega: X(\omega) = x, Y(\omega) = y\})\\
+    &=\left\{
+            \begin{array}{ll}
+                  P(X = x_i, Y = y_i) & \text{se } (x,y) = (x_i,y_i) \in \mathbb{R}_{X,Y}\\
+                   0, & \text{c.c.}\\
+            \end{array} 
+      \right.
+\end{aligned}
+$$
+
+\noindent E raramente é representada graficamente. Quando o contradomínio é finito e não muito numeroso, é convenientemente disposta numa tabela do tipo abaixo:
+
+\begin{table}[h]
+    \centering
+    {\renewcommand{\arraystretch}{1.25}%
+    \begin{tabular}{|c|ccc|}
+        \hline
+        $X$ / $Y$ & $y_1$ & $y_2$ & $y_3$ \\
+        \hline
+        $x_1$ & $P(X=x_1, Y=y_1)$ & $P(X=x_1, Y=y_2)$ & $P(X=x_1, Y=y_3)$ \\
+        $x_2$ & $P(X=x_2, Y=y_1)$ & $P(X=x_2, Y=y_2)$ & $P(X=x_2, Y=y_3)$ \\
+        $x_3$ & $P(X=x_3, Y=y_1)$ & $P(X=x_3, Y=y_2)$ & $P(X=x_3, Y=y_3)$ \\
+        \hline
+    \end{tabular}
+    }
+    \caption{Possível função de probabilidade conjunta de $X$ e $Y$.}
+\end{table}
+
+\begin{theo}[\underline{Função de distribuição conjunta}]{def:f.d.c}\label{def:f.d.c}
+    \noindent A f.d. conjunta do par aleatório discreto $(X,Y)$ pode ser obtida à custa da f.p. conjunta:
+
+    \vspace{-2em}
+    \begin{align*}
+        F_{X,Y}(x,y) &= P(X \leq x, Y \leq y)\\
+        &= \sum_{x_i \leq x} \sum_{y_i \leq y} P(X = x_i, Y = y_i),\,\; (x,y) \in \mathbb{R}^2
+    \end{align*}
+
+    \vspace{0.5 em}
+\end{theo}
+
+\begin{theo}[\underline{Função de probabilidade marginais de $X$ e $Y$}]{def:f.p.m}\label{def:f.p.m}
+
+    \noindent A f.p. marginal do par aleatório discreto $(X,Y)$ pode ser obtida à custa da f.p. conjunta:
+    $$
+        P(X = x) = \sum_y P(X = x, Y = y),\,\; x\in \mathbb{R}
+    $$
+
+    A f.p. marginal de $Y$ obtém-se de modo análogo:
+    $$
+        P(Y = y) = \sum_x P(X = x, Y = y),\,\; x\in \mathbb{R}
+    $$
+        
+    \vspace{0.5 em}
+\end{theo}
+
+\begin{theo}[\underline{Função de distribuição marginais de $X$ e $Y$}]{def:f.d.m}\label{def:f.d.m}
+
+    \noindent A f.d. marginais do par aleatório discreto $(X,Y)$ podem ser obtidas à custa da f.p. marginal:
+    \begin{align*}
+        F_X(x) &= P(X \leq x) = \sum_{x_i \leq x}\left[\sum_y P(X = x_i, Y = y)\right] = F_{X,Y}(x, +\infty)\\
+        F_Y(y) &= P(Y \leq y) = \sum_{y_i \leq y}\left[\sum_x P(X = x, Y = y_i)\right] = F_{X,Y}(+\infty, y)\\
+    \end{align*}
+\end{theo}
+
+\noindent\textbf{Função de probabilidade condicional} --- De modo a verificar a forma como o registo de uma observação de uma das v.a. do par aleatório influencia o comportamento probabilistico de outra v.a. recorremos à função de probabilidade condicional.
+
+\begin{theo}[\underline{Função de probabilidade condicional de $X$ e $Y$}]{def:f.p.c}\label{def:f.p.c}
+
+    \noindent A f.p. condicional a $Y = y$ --- caso $P(Y = y)$:
+
+    $$
+        P(X = x | Y = y) = \dfrac{P(X = x, Y = y)}{P(Y = y)},\;\, x \in \mathbb{R}
+    $$
+
+    \noindent A f.p. condicional a $X = x$ --- caso $P(X = x)$:
+
+    $$
+        P(Y = y | X = x) = \dfrac{P(X = x, Y = y)}{P(X = x)},\;\, x \in \mathbb{R}
+    $$
+\end{theo}
+
+\noindent De modo semelhante, é conveniente definir as funções de distribuição condicionais:
+
+\begin{theo}[\underline{Função de distribuição condicional de $X$ e $Y$}]{def:f.d.c}\label{def:f.d.c}
+
+    \noindent A f.d. condicional a $Y = y$ --- caso $P(Y = y)$:
+
+    $$
+        F_{X|Y=y}(x) = P(X \leq x | Y = y) = \sum_{x_i \leq x}\dfrac{P(X = x_i, Y = y)}{P(Y = y)},\;\, x \in \mathbb{R}
+    $$
+
+    \noindent A f.d. condicional a $X = x$ --- caso $P(X = x)$:
+
+    $$
+        F_{Y|X=x}(y) = P(Y \leq y | X = x) = \sum_{y_i \leq y}\dfrac{P(X = x, Y = y_i)}{P(X = x)},\;\, x \in \mathbb{R}
+    $$
+\end{theo}
+
+\noindent Bem como os respetivos parâmetros de caracterização:
+
+\begin{itemize}
+    \item Valor esperado de $X | Y = y$
+    $$
+        E(X = x | Y = y) = \sum_x x\, P(X = x | Y = y)\;\; \text{se}P(Y = y) > 0
+    $$
+    \item Valor esperado de $Y | X = x$
+    $$
+        E(Y = y | X = x) = \sum_y y\, P(X = x | Y = y)\;\; \text{se}P(X = x) > 0
+    $$
+\end{itemize}
+
+Admitindo que $E(X^2)$ e $E(Y)^2$ existem:
+\begin{itemize}
+    \item Variância de $X | Y = y$
+    \begin{align*}
+        V(X | Y = y) &= E(X^2 | Y = y) - E(X | Y = y)^2\\
+        &= \sum_x x^2\, P(X = x | Y = y) - \left[\sum_x x\, P(X = x | Y = y)\right]^2
+    \end{align*}
+    desde que $P(Y = y) > 0$
+
+    \item Variância de $Y | X = x$
+    \begin{align*}
+        V(Y | X = x) &= E(Y^2 | X = x) - E(Y | X = x)^2\\
+        &= \sum_y y^2\, P(X = x | Y = y) - \left[\sum_y y\, P(X = x | Y = y)\right]^2
+    \end{align*}
+    desde que $P(X = x) > 0$  
+\end{itemize}
+
+\noindent \textbf{(In)dependência} --- De um modo geral, as v.a. que constituem um par aleatório influênciam-se mutuamente, são \textbf{dependentes}. Caso tal não aconteça dizem-se \textbf{indenpendentes}.
+
+\begin{theo}[\underline{Independência}]{def:indep}\label{def:indep}
+
+    \noindent A variàveis dizem-se independentes --- escrevendo-se $X\perp \!\!\! \perp Y$ --- se
+
+    $$
+        P(X = x, Y = y) = P(X = x) \times P(Y = y),\,\; \forall (x,y) \in \mathbb{R}_{X,Y}
+    $$
+
+    \noindent Ou seja, caso seja possível escrever a f.p. conjunta do par aleatório discreto $(X,Y)$ à custa do produto das f.p. marginais de $X$ e $Y$, para qualquer par ordenado $(x,y) \in \mathbb{X,Y}$
+\end{theo}
+\noindent Podemos enunciar a noção de independência entre duas v.a. da seguinte forma:
+
+$$
+    P(X \in B_X, Y \in B_Y) = P(X \in B_X) \times P(Y \in B_Y)
+$$
+\noindent para quaisquer conjuntos de Borel $B_X$ e $B_Y$ de $\mathbb{R}$
+\noindent Podemos definir independência entre as v.a. $X$ e $Y$ (com qualquer caráter) do seguinte modo. As v.a. $X$ e $Y$ dizem-se independentes sse
+$$
+    F_{X,Y}(x,y) = F_X(x) \times F_Y(y),\,\; \forall (x,y) \in \mathbb{R}^2
+$$
+
+\noindent Caso  $X\perp \!\!\! \perp Y$, sse for possível escrever a f.d. conjunta do par aleatório $(X,Y)$ à custa do produto das f.d. marginais de $X$ e $Y$. Além disso, caso $X\perp \!\!\! \perp Y$ e $P(X = x | Y = y)$ esteja definida, tempos:
+
+\begin{itemize}
+    \item $P(X = x | Y = y) = P(X = x)$
+    \item $E(X | Y = y) = E(X)$
+    \item $V(X | Y = y) = V(X)$
+\end{itemize}
+
+%//==============================--@--==============================//%
