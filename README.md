@@ -26,4 +26,4 @@ This work is licensed under a [Creative Commons Attribution Non Commercial Share
 
 ## Contributing
 
-Since this is a work in progress, contributions to this repository are welcome! If you notice any errors or have suggestions for improvements or updates on the course's contents, feel free to open an issue or submit a pull request.
+Contributions to this repository are welcome! If you notice any errors or have suggestions for improvements or updates on the course's contents, feel free to open an issue or submit a pull request.
